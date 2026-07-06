@@ -4,7 +4,7 @@
     --primary-hover: #a78bfa;
     --primary-glow: rgba(139, 92, 246, 0.5);
     --secondary: #4f46e5;
-    
+
     /* Light Theme (Default) */
     --bg-main: #f8fafc;
     --bg-mesh-1: rgba(139, 92, 246, 0.15);
@@ -64,7 +64,7 @@ body {
     position: absolute;
     inset: 0;
     background: radial-gradient(circle at 50% 50%, var(--bg-mesh-1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, var(--bg-mesh-2) 0%, transparent 40%);
+        radial-gradient(circle at 80% 20%, var(--bg-mesh-2) 0%, transparent 40%);
     filter: blur(80px);
     opacity: 0.8;
     animation: waveMovement 20s infinite alternate ease-in-out;
@@ -74,7 +74,7 @@ body {
     position: absolute;
     inset: 0;
     background-size: 50px 50px;
-    background-image: 
+    background-image:
         linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
         linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
     transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
@@ -83,14 +83,27 @@ body {
 }
 
 @keyframes waveMovement {
-    0% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.2) translate(5%, 5%); }
-    100% { transform: scale(1) translate(-5%, -5%); }
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+
+    50% {
+        transform: scale(1.2) translate(5%, 5%);
+    }
+
+    100% {
+        transform: scale(1) translate(-5%, -5%);
+    }
 }
 
 @keyframes gridMove {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 50px; }
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 0 50px;
+    }
 }
 
 /* Main Layout Container */
@@ -103,7 +116,8 @@ body {
     align-items: center;
     gap: clamp(20px, 4vw, 40px);
     margin: auto 0;
-    padding-top: clamp(60px, 8vw, 20px); /* Leave room for toggle on mobile */
+    padding-top: clamp(60px, 8vw, 20px);
+    /* Leave room for toggle on mobile */
 }
 
 /* Glass Card with Animated Gradient Border */
@@ -112,7 +126,8 @@ body {
     width: 100%;
     max-width: 800px;
     border-radius: 32px;
-    padding: 2px; /* Space for the gradient border */
+    padding: 2px;
+    /* Space for the gradient border */
     background: linear-gradient(135deg, var(--glass-border-glow) 0%, transparent 50%, var(--glass-border) 100%);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2), 0 0 40px var(--bg-mesh-1);
     transition: all 0.5s ease;
@@ -146,8 +161,13 @@ body {
 }
 
 @keyframes borderSpin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Status Badge */
@@ -162,7 +182,7 @@ body {
     font-size: clamp(13px, 2vw, 15px);
     font-weight: 700;
     color: var(--text-color);
-    box-shadow: inset 0 0 10px rgba(255,255,255,0.05);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
 }
 
 .pulse-dot {
@@ -184,7 +204,12 @@ body {
 }
 
 @keyframes ping {
-    75%, 100% { transform: scale(3); opacity: 0; }
+
+    75%,
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
 }
 
 /* Logo Animation */
@@ -197,9 +222,17 @@ body {
     animation: breathe 6s ease-in-out infinite;
 }
 
+
 @keyframes breathe {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 #main-logo {
@@ -282,7 +315,9 @@ h1 {
 }
 
 @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+        opacity: 0;
+    }
 }
 
 /* Actions & Features */
@@ -318,7 +353,7 @@ h1 {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -388,7 +423,7 @@ h1 {
     justify-content: center;
     z-index: 100;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .theme-toggle:hover {
@@ -403,8 +438,13 @@ h1 {
     transform: rotate(360deg) scale(0.9);
 }
 
-[data-theme="dark"] .icon-moon { display: none; }
-[data-theme="light"] .icon-sun { display: none; }
+[data-theme="dark"] .icon-moon {
+    display: none;
+}
+
+[data-theme="light"] .icon-sun {
+    display: none;
+}
 
 /* Footer */
 footer {
@@ -421,9 +461,16 @@ footer {
     transform: translateY(40px);
     transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
+
 .observe-element.visible {
     opacity: 1;
     transform: translateY(0);
 }
-.delay-1 { transition-delay: 0.2s; }
-.delay-2 { transition-delay: 0.4s; }
+
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
