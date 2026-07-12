@@ -1,110 +1,65 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" data-theme="dark">
-
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Romman Labs - حلول رقمية نطورها بشغف لتكون جزءاً من تطور الأعمال والمجتمع" />
-    <meta name="theme-color" content="#030712" />
-    <title>Romman Labs · ننطلق قريباً</title>
-
+    <meta name="description" content="رمان لابز" />
+    <meta name="theme-color" content="#fafafa" />
+    <title>رمان لابز</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <script>
-        // فحص ما إذا كان الزائر داخل النطاق الفرعي (app) ولم يقم بالدخول للمجلد بعد
-        if (window.location.hostname.startsWith('app.') && window.location.pathname === '/') {
-            // توجيهه فوراً للمجلد الذي يحتوي على التطبيق
-            window.location.href = window.location.origin + "/app/";
-        }
-    </script>
-
     <script src="script.js" defer></script>
 </head>
-
 <body>
-    <!-- Premium Dynamic Background -->
-    <div class="dynamic-bg">
-        <div class="gradient-wave"></div>
-        <div class="geometric-grid"></div>
+
+    <div class="appbar">
+        <a href="/" class="appbar-brand">
+            <img src="logo.svg" alt="رمان لابز" class="appbar-logo" />
+            <span>رمان لابز</span>
+        </a>
+        <div class="appbar-actions">
+            <button class="theme-btn" id="theme-btn" aria-label="الوضع الداكن">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+        </div>
     </div>
 
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="theme-toggle" aria-label="تبديل المظهر">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-    </button>
+    <main class="hero">
 
-    <!-- Main Container -->
-    <div class="page-container">
-        <!-- Central Glass Card -->
-        <main class="glass-card observe-element">
-            <div class="glass-card-inner">
-                <!-- Eyebrow Badge -->
-                <div class="status-badge">
-                    <span class="pulse-dot"></span>
-                    <span>ننطلق قريباً</span>
-                </div>
+        <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>قيد الإطلاق</span>
+        </div>
 
-                <!-- The Premium Logo Badge -->
-                <div class="hero-logo-wrapper">
-                    <img src="logo.png" alt="Romman Labs Logo" id="main-logo" decoding="async" loading="eager"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
-                    <h2 id="logo-fallback" style="display: none;">Romman<span class="text-primary">Labs</span></h2>
-                </div>
+        <div class="hero-logo-wrapper">
+            <img src="logo.svg" alt="" class="hero-logo" />
+            <div class="hero-logo-glow"></div>
+        </div>
 
-                <!-- Fluid Typography Heading -->
-                <h1>نبني اليوم <span class="text-primary">لنؤثر في الغد.</span></h1>
+        <h1 class="hero-title">
+            <span class="hero-title-ar">رمان</span>
+            <span class="hero-title-en">Romman Labs</span>
+        </h1>
 
-                <!-- Rotating Text Container -->
-                <div class="rotating-text-container">
-                    <span class="static-text">نطور منصات ذكية لدعم</span>
-                    <span id="dynamic-text-wrapper"><span id="dynamic-text" class="dynamic-text"></span></span>
-                </div>
+        <p class="hero-desc">
+            نجمع بين أصالة التصميم وقوة التقنية<br class="br-d" />
+            لنقدم لك تجربة رقمية استثنائية.
+        </p>
 
-                <!-- Action & Features -->
-                <div class="actions-container observe-element delay-1">
-                    <button class="cta-button">
-                        <span>اكتشف الرؤية</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                    </button>
-                    
-                    <div class="features-badges">
-                        <div class="feature-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                            <span>حلول ذكية</span>
-                        </div>
-                        <div class="feature-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                            <span>منظومات رقمية</span>
-                        </div>
-                        <div class="feature-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                            <span>تصميم شامل</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+        <div class="hero-chip">
+            <span class="chip-text" id="chip-text"></span>
+            <span class="cursor" id="cursor-word">|</span>
+        </div>
 
-        <footer class="observe-element delay-2">
-            <p>© 2026 رمان لابز. جميع الحقوق محفوظة.</p>
-        </footer>
-    </div>
+
+
+        <p class="hero-footer">© 2026 رمان لابز</p>
+
+    </main>
+
 </body>
-
 </html>

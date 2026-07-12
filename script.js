@@ -1,50 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. Theme Toggle Logic
-    const themeToggleBtn = document.getElementById("theme-toggle");
-    const htmlElement = document.documentElement;
-    const savedTheme = localStorage.getItem("theme");
-    
-    if (savedTheme) {
-        htmlElement.setAttribute("data-theme", savedTheme);
-    } else {
-        htmlElement.setAttribute("data-theme", "dark");
-    }
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener("click", () => {
-            // Apply micro-interaction class
-            themeToggleBtn.classList.add("clicked");
-            setTimeout(() => themeToggleBtn.classList.remove("clicked"), 400);
-
-            const currentTheme = htmlElement.getAttribute("data-theme");
-            const newTheme = currentTheme === "dark" ? "light" : "dark";
-            htmlElement.setAttribute("data-theme", newTheme);
-            localStorage.setItem("theme", newTheme);
-        });
-    }
-
-    // 2. Intersection Observer for Scroll Animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.observe-element').forEach(el => {
-        observer.observe(el);
-    });
-
-    // 3. Advanced Fade + Typewriter Effect Logic
     const words = [
         "قطاع التجارة والتعاقدات",
         "قطاع المقاولات والبناء",
@@ -52,53 +7,62 @@ document.addEventListener("DOMContentLoaded", () => {
         "تتبع الأصول وإدارتها",
         "دمج ذوي الاحتياجات الخاصة"
     ];
-    
-    let currentWordIndex = 0;
-    const dynamicText = document.getElementById("dynamic-text");
-    const dynamicTextWrapper = document.getElementById("dynamic-text-wrapper");
-    
-    function typeWord(word, callback) {
-        let charIndex = 0;
-        dynamicText.innerHTML = "<span class='cursor'>|</span>";
-        
-        function typeChar() {
-            if (charIndex < word.length) {
-                charIndex++;
-                dynamicText.innerHTML = word.substring(0, charIndex) + "<span class='cursor'>|</span>";
-                
-                let typingSpeed = 40 + Math.random() * 60;
-                if (Math.random() < 0.1) typingSpeed += 100; // Human pause
-                
-                setTimeout(typeChar, typingSpeed);
+
+    let i = 0;
+    const el = document.getElementById("chip-text");
+
+    function typeWord(word, done) {
+        let ci = 0;
+        el.textContent = "";
+        function go() {
+            if (ci < word.length) {
+                ci++;
+                el.textContent = word.substring(0, ci);
+                setTimeout(go, 25 + Math.random() * 35);
             } else {
-                if (callback) setTimeout(callback, 2500); // Wait after typing is done
+                if (done) setTimeout(done, 2000);
             }
         }
-        typeChar();
+        go();
     }
 
-    function changeWordCycle() {
-        // Fade out the current word
-        dynamicTextWrapper.classList.add('fade-out');
-        
-        setTimeout(() => {
-            // After fading out, change the word index and clear text
-            currentWordIndex = (currentWordIndex + 1) % words.length;
-            const nextWord = words[currentWordIndex];
-            dynamicText.innerHTML = "<span class='cursor'>|</span>";
-            
-            // Fade back in
-            dynamicTextWrapper.classList.remove('fade-out');
-            
-            // Start typing the new word once it's visible again
-            setTimeout(() => {
-                typeWord(nextWord, changeWordCycle);
-            }, 300); // Wait for fade-in to complete
-        }, 400); // Match CSS transition duration
+    function eraseWord(word, done) {
+        let ci = 1;
+        function go() {
+            if (ci < word.length) {
+                el.textContent = word.substring(0, word.length - ci);
+                ci++;
+                setTimeout(go, 15 + Math.random() * 20);
+            } else {
+                el.textContent = "";
+                if (done) setTimeout(done, 100);
+            }
+        }
+        go();
     }
 
-    // Initialize first word typing with a slight delay
-    setTimeout(() => {
-        typeWord(words[0], changeWordCycle);
-    }, 800);
+    function next() {
+        i = (i + 1) % words.length;
+        setTimeout(() => typeWord(words[i], next), 150);
+    }
+
+    function cycle() {
+        eraseWord(words[i], next);
+    }
+
+    setTimeout(() => typeWord(words[0], cycle), 800);
+
+    const btn = document.getElementById("theme-btn");
+    const html = document.documentElement;
+    const saved = localStorage.getItem("theme");
+    if (saved) html.setAttribute("data-theme", saved);
+
+    btn.addEventListener("click", () => {
+        const cur = html.getAttribute("data-theme");
+        const nxt = cur === "dark" ? "light" : "dark";
+        html.setAttribute("data-theme", nxt);
+        localStorage.setItem("theme", nxt);
+        btn.setAttribute("aria-label", nxt === "dark" ? "الوضع النهاري" : "الوضع الداكن");
+    });
+
 });
