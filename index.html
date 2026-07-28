@@ -1,65 +1,341 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="رمان لابز" />
-    <meta name="theme-color" content="#fafafa" />
-    <title>رمان لابز</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رمان لابز | Romman Labs — حلول رقمية ذكية للقطاعات الصناعية والتجارية</title>
+  <meta name="description"
+    content="رمان لابز — نؤمن بأن التكنولوجيا الجيدة تُصنع مع الناس. نركّز على بناء حلول رقمية ذكية للقطاعات الصناعية والتجارية. أول منتج: صمام." />
+  <meta name="theme-color" content="#080406" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-    <div class="appbar">
-        <a href="/" class="appbar-brand">
-            <img src="logo.svg" alt="رمان لابز" class="appbar-logo" />
-            <span>رمان لابز</span>
-        </a>
-        <div class="appbar-actions">
-            <button class="theme-btn" id="theme-btn" aria-label="الوضع الداكن">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
-            </button>
-        </div>
+  <!-- Background Ambient Layers -->
+  <canvas id="hero-canvas"></canvas>
+  <div class="ambient-grid"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <a href="#" class="brand-wrapper">
+      <div class="brand-logo-frame">
+        <img src="logo.svg" alt="Romman Labs Logo" />
+      </div>
+      <span class="brand-title" data-ar="رمان لابز" data-en="Romman Labs">رمان لابز</span>
+    </a>
+
+    <nav aria-label="Main Navigation">
+      <ul class="nav-menu">
+        <li><a href="#problem" class="nav-link" data-ar="المشكلة" data-en="The Problem">المشكلة</a></li>
+        <li><a href="#philosophy" class="nav-link" data-ar="الفلسفة" data-en="Philosophy">الفلسفة</a></li>
+        <li><a href="#sectors" class="nav-link" data-ar="القطاعات" data-en="Sectors">القطاعات</a></li>
+        <li><a href="#samaam" class="nav-link" data-ar="مشروع صمام" data-en="Project Samaam">مشروع صمام</a></li>
+        <li><a href="#future" class="nav-link" data-ar="المستقبل" data-en="The Future">المستقبل</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-controls">
+      <button class="control-btn" id="lang-toggle" aria-label="Switch Language">
+        🌐 <span id="lang-text">English</span>
+      </button>
+
+      <button class="control-btn" id="theme-toggle" aria-label="Switch Theme">
+        <span id="theme-icon">☀️</span>
+      </button>
     </div>
+  </header>
 
-    <main class="hero">
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow-pill reveal-on-scroll">
+            <span class="seed-dot"></span>
+            <span data-ar="رمان لابز · شركة تقنية ناشئة" data-en="ROMMAN LABS · PRE-LAUNCH TECH">رمان لابز · شركة تقنية ناشئة</span>
+          </div>
 
-        <div class="hero-badge">
-            <span class="badge-dot"></span>
-            <span>قيد الإطلاق</span>
+          <h1 class="hero-title reveal-on-scroll">
+            <span data-ar="نؤمن بأن التكنولوجيا الجيدة" data-en="We believe good technology">نؤمن بأن التكنولوجيا الجيدة</span>
+            <span class="highlight-text" data-ar="تُصنع مع الناس." data-en="is built alongside people.">تُصنع مع الناس.</span>
+          </h1>
+
+          <p class="hero-desc reveal-on-scroll"
+             data-ar="نركّز على بناء حلول رقمية ذكية للقطاعات الصناعية والتجارية — بأسلوب بسيط، عملي، ومباشر يحل مشكلات حقيقية بالميدان."
+             data-en="We focus on building smart digital solutions for industrial and commercial sectors — grounded, human, and practical.">
+            نركّز على بناء حلول رقمية ذكية للقطاعات الصناعية والتجارية — بأسلوب بسيط، عملي، ومباشر يحل مشكلات حقيقية بالميدان.
+          </p>
+
+          <div class="hero-actions reveal-on-scroll">
+            <a href="#samaam" class="btn-primary">
+              <span data-ar="تعرّف على مشروع صمّام" data-en="Discover Project Samaam">تعرّف على مشروع صمّام</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </a>
+
+            <a href="#philosophy" class="btn-secondary">
+              <span data-ar="فلسفتنا في البناء" data-en="Our Philosophy">فلسفتنا في البناء</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: THE PROBLEM (المشكلة) -->
+    <section id="problem">
+      <div class="container">
+        <div class="eyebrow-pill reveal-on-scroll">
+          <span class="seed-dot"></span>
+          <span data-ar="المشكلة التي نعالجها" data-en="THE PROBLEM WE ADDRESS">المشكلة التي نعالجها</span>
         </div>
 
-        <div class="hero-logo-wrapper">
-            <img src="logo.svg" alt="" class="hero-logo" />
-            <div class="hero-logo-glow"></div>
-        </div>
+        <h2 class="heading-section reveal-on-scroll"
+            data-ar="التعقيد البيروقراطي في العمليات الميدانية"
+            data-en="Operational friction in the field">
+          التعقيد البيروقراطي في العمليات الميدانية
+        </h2>
 
-        <h1 class="hero-title">
-            <span class="hero-title-ar">رمان</span>
-            <span class="hero-title-en">Romman Labs</span>
-        </h1>
-
-        <p class="hero-desc">
-            نجمع بين أصالة التصميم وقوة التقنية<br class="br-d" />
-            لنقدم لك تجربة رقمية استثنائية.
+        <p class="subheading-section reveal-on-scroll"
+           data-ar="تعتمد القطاعات الحيوية في يومياتها على قرارات سريعة وتدفقات مالية معقدة. عندما تتشتت الاعتمادات بين الورق والبريد والمحادثات الشفهية، يقع التسرب المالي وتتأخر المشاريع."
+           data-en="Heavy industries rely daily on fast decisions and complex approvals. When channels get scattered across paper and emails, financial leaks happen and progress slows down.">
+          تعتمد القطاعات الحيوية في يومياتها على قرارات سريعة وتدفقات مالية معقدة. عندما تتشتت الاعتمادات بين الورق والبريد والمحادثات الشفهية، يقع التسرب المالي وتتأخر المشاريع.
         </p>
 
-        <div class="hero-chip">
-            <span class="chip-text" id="chip-text"></span>
-            <span class="cursor" id="cursor-word">|</span>
+        <div class="cards-grid">
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">⚙️</div>
+            <h3 class="card-title" data-ar="تشتت سلاسل الاعتماد" data-en="Scattered Approval Loops">تشتت سلاسل الاعتماد</h3>
+            <p class="card-desc"
+               data-ar="غياب مركز موحد وموثق لمتابعة الصلاحيات وأوامر الشراء الطارئة."
+               data-en="Lack of a single transparent hub for emergency purchasing and approvals.">
+              غياب مركز موحد وموثق لمتابعة الصلاحيات وأوامر الشراء الطارئة.
+            </p>
+          </div>
+
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">⏳</div>
+            <h3 class="card-title" data-ar="بطء القرار التشغيلي" data-en="Operational Delay">بطء القرار التشغيلي</h3>
+            <p class="card-desc"
+               data-ar="توقف العمل الميداني بانتظار موافقة ورقية أو إيميل قد يستغرق أياماً."
+               data-en="Field work coming to a halt while waiting for paper or email sign-offs.">
+              توقف العمل الميداني بانتظار موافقة ورقية أو إيميل قد يستغرق أياماً.
+            </p>
+          </div>
+
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">🌱</div>
+            <h3 class="card-title" data-ar="صعوبة الدمج الشامل" data-en="Accessibility Gaps">صعوبة الدمج الشامل</h3>
+            <p class="card-desc"
+               data-ar="إغفال تصميم الواجهات الشاملة التي تمكّن كافة فئات فريق العمل بمختلف قدراتهم."
+               data-en="Neglecting inclusive design that empowers team members of all abilities.">
+              إغفال تصميم الواجهات الشاملة التي تمكّن كافة فئات فريق العمل بمختلف قدراتهم.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PHILOSOPHY (الفلسفة) -->
+    <section id="philosophy">
+      <div class="container">
+        <div class="eyebrow-pill reveal-on-scroll">
+          <span class="seed-dot"></span>
+          <span data-ar="فلسفة رمان" data-en="OUR PHILOSOPHY">فلسفة رمان</span>
         </div>
 
+        <h2 class="heading-section reveal-on-scroll"
+            data-ar="رمزية الرمانة: تنظيم متقن وحماية للقيمة"
+            data-en="The Pomegranate Metaphor: Organization & Care">
+          رمزية الرمانة: تنظيم متقن وحماية للقيمة
+        </h2>
 
+        <p class="subheading-section reveal-on-scroll"
+           data-ar="رمز الرمانة يمثل حبات عديدة تنمو وتتكتل بنظام دقيق داخل غلاف صلب يحمي قيمتها. نحن نبدأ من فهم المشكلة في أرض الواقع، ثم صياغة أداة واضحة ومباشرة."
+           data-en="The pomegranate represents organized seeds gathered with structure under a protective shell. We start by listening in the field, then building precise tools.">
+          رمز الرمانة يمثل حبات عديدة تنمو وتتكتل بنظام دقيق داخل غلاف صلب يحمي قيمتها. نحن نبدأ من فهم المشكلة في أرض الواقع، ثم صياغة أداة واضحة ومباشرة.
+        </p>
 
-        <p class="hero-footer">© 2026 رمان لابز</p>
+        <div class="philosophy-grid">
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">01</div>
+            <h3 class="card-title" data-ar="الفوضى (Chaos)" data-en="Chaos">الفوضى (Chaos)</h3>
+            <p class="card-desc"
+               data-ar="البداية من استيعاب التفاصيل المشتتة والعمليات المعقدة لدى الشريك."
+               data-en="Understanding scattered details and complex operational reality.">
+              البداية من استيعاب التفاصيل المشتتة والعمليات المعقدة لدى الشريك.
+            </p>
+          </div>
 
-    </main>
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">02</div>
+            <h3 class="card-title" data-ar="التنظيم (Organization)" data-en="Organization">التنظيم (Organization)</h3>
+            <p class="card-desc"
+               data-ar="ترتيب الصلاحيات وتصميم مسارات عمل بسيطة وسلسة للجميع."
+               data-en="Structuring approvals into clean, accessible workflows for everyone.">
+              ترتيب الصلاحيات وتصميم مسارات عمل بسيطة وسلسة للجميع.
+            </p>
+          </div>
 
+          <div class="step-card reveal-on-scroll">
+            <div class="step-num">03</div>
+            <h3 class="card-title" data-ar="التحكم (Control)" data-en="Control">التحكم (Control)</h3>
+            <p class="card-desc"
+               data-ar="منح الإدارة والميدان رؤية شفافة وتأكيد دقيق يمنع التسرب والخطأ."
+               data-en="Giving leaders and field teams full transparency and confidence.">
+              منح الإدارة والميدان رؤية شفافة وتأكيد دقيق يمنع التسرب والخطأ.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SECTORS (القطاعات والمجالات) -->
+    <section id="sectors">
+      <div class="container">
+        <div class="eyebrow-pill reveal-on-scroll">
+          <span class="seed-dot"></span>
+          <span data-ar="مجالات التركيز" data-en="SECTORS & FOCUS AREAS">مجالات التركيز</span>
+        </div>
+
+        <h2 class="heading-section reveal-on-scroll"
+            data-ar="نركز على القطاعات الحيوية والتجارية"
+            data-en="Focusing on essential sectors">
+          نركز على القطاعات الحيوية والتجارية
+        </h2>
+
+        <div class="cards-grid">
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">🤝</div>
+            <h3 class="card-title" data-ar="التجارة والتعاقدات" data-en="Commerce & Contracting">التجارة والتعاقدات</h3>
+            <p class="card-desc"
+               data-ar="تيسير عقود التوريد وإدارتها بوضوح بين جميع الأطراف."
+               data-en="Streamlining vendor contracts and commercial supply agreements.">
+              تيسير عقود التوريد وإدارتها بوضوح بين جميع الأطراف.
+            </p>
+          </div>
+
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">🏗️</div>
+            <h3 class="card-title" data-ar="المقاولات والبناء" data-en="Construction & Building">المقاولات والبناء</h3>
+            <p class="card-desc"
+               data-ar="ربط الميدان بالإدارة المالية وتأمين موافقات المواد والمعدات."
+               data-en="Connecting field sites with finance to secure material sign-offs.">
+              ربط الميدان بالإدارة المالية وتأمين موافقات المواد والمعدات.
+            </p>
+          </div>
+
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">🚛</div>
+            <h3 class="card-title" data-ar="سلاسل الإمداد" data-en="Supply Chain & Logistics">سلاسل الإمداد</h3>
+            <p class="card-desc"
+               data-ar="تتبع الحركة التشغيلية وتقليل الاحتكاك في الشحن والتوزيع."
+               data-en="Reducing operational friction across distribution and shipping.">
+              تتبع الحركة التشغيلية وتقليل الاحتكاك في الشحن والتوزيع.
+            </p>
+          </div>
+
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">📦</div>
+            <h3 class="card-title" data-ar="تتبع الأصول" data-en="Asset Tracking">تتبع الأصول</h3>
+            <p class="card-desc"
+               data-ar="حوكمة حركة المعدات والأصول الثمينة برؤية فورية."
+               data-en="Real-time visibility over valuable equipment and company assets.">
+              حوكمة حركة المعدات والأصول الثمينة برؤية فورية.
+            </p>
+          </div>
+
+          <div class="card-item reveal-on-scroll">
+            <div class="card-icon">♿</div>
+            <h3 class="card-title" data-ar="دمج ذوي الاحتياجات الخاصة" data-en="Inclusive Design & Accessibility">دمج ذوي الاحتياجات الخاصة</h3>
+            <p class="card-desc"
+               data-ar="بناء واجهات سهلة الوصول تلائم جميع قدرات طاقم العمل بكرامة وسلاسة."
+               data-en="Designing accessible software that empowers every team member with dignity.">
+              بناء واجهات سهلة الوصول تلائم جميع قدرات طاقم العمل بكرامة وسلاسة.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PROJECT SAMAAM (مشروع صمام) -->
+    <section id="samaam">
+      <div class="container">
+        <div class="samaam-card reveal-on-scroll">
+          <div class="samaam-badge" data-ar="أول منتج من رمان لابز" data-en="FIRST PRODUCT BY ROMMAN LABS">أول منتج من رمان لابز</div>
+
+          <h2 class="samaam-title">
+            <span data-ar="صمّـام — قريباً جداً" data-en="Samaam — Coming Very Soon">صمّـام — قريباً جداً</span>
+          </h2>
+
+          <p class="subheading-section" style="margin-bottom: 28px; font-style: italic;"
+             data-ar="في بعض الأحيان، القرار الصغير يحمل ثمنًا كبيرًا... نبني أداة تُحكم اللحظة قبل أن تفلت، وتغلق الثغرة قبل أن تنفتح. قريباً، ستعرف لماذا سمّيناه صمّام."
+             data-en="Sometimes a single decision carries an immense cost... We are crafting a tool to catch the moment before it slips away. Coming soon — you will discover why we named it Samaam.">
+            في بعض الأحيان، القرار الصغير يحمل ثمنًا كبيرًا... نبني أداة تُحكم اللحظة قبل أن تفلت، وتغلق الثغرة قبل أن تنفتح. قريباً، ستعرف لماذا سمّيناه صمّام.
+          </p>
+
+          <a href="#future" class="btn-primary">
+            <span data-ar="كن جزءاً من الإطلاق التجريبي" data-en="Join Early Private Testing">كن جزءاً من الإطلاق التجريبي</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: THE FUTURE (المستقبل والتواصل) -->
+    <section id="future">
+      <div class="container">
+        <div class="cta-box reveal-on-scroll">
+          <div class="eyebrow-pill">
+            <span class="seed-dot"></span>
+            <span data-ar="المستقبل والنمو" data-en="THE FUTURE & GROWTH">المستقبل والنمو</span>
+          </div>
+
+          <h2 class="heading-section" data-ar="نستمع أولاً، ثم نبني سوياً" data-en="We listen first, then build together">
+            نستمع أولاً، ثم نبني سوياً
+          </h2>
+
+          <p class="subheading-section" style="margin: 0 auto 32px;"
+             data-ar="نحضر للإطلاق التدريجي لمنتجاتنا بالتعاون مع شركاء مبكرين. يسعدنا التواصل وسماع تحدياتكم التشغيلية."
+             data-en="We are preparing for our gradual rollout alongside early partners. We would love to listen to your operational challenges.">
+            نحضر للإطلاق التدريجي لمنتجاتنا بالتعاون مع شركاء مبكرين. يسعدنا التواصل وسماع تحدياتكم التشغيلية.
+          </p>
+
+          <form class="form-group" onsubmit="event.preventDefault(); alert(document.documentElement.getAttribute('lang') === 'en' ? 'Thank you! We will reach out soon.' : 'شكراً لتواصلك! سيتواصل معك فريق رمان لابز قريباً.');">
+            <input type="email" class="email-input" placeholder="أدخل البريد الإلكتروني..." data-ar="أدخل البريد الإلكتروني..." data-en="Enter your email address..." required />
+            <button type="submit" class="btn-primary">
+              <span data-ar="تواصل معنا" data-en="Get in Touch">تواصل معنا</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <span data-ar="© 2026 رمان لابز (Romman Labs). جميع الحقوق محفوظة." data-en="© 2026 Romman Labs. All rights reserved.">© 2026 رمان لابز (Romman Labs). جميع الحقوق محفوظة.</span>
+      </div>
+      <div>
+        <a href="mailto:hello@rommanlabs.com" style="color: var(--text-muted); text-decoration: none;">hello@rommanlabs.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
+
 </html>
