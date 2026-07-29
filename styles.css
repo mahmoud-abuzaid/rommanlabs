@@ -24,6 +24,16 @@
   --gold: #e6b85c;
   --gold-glow: rgba(230, 184, 92, 0.2);
 
+  /* Eyebrow & Badge Theme Variables */
+  --pill-bg: rgba(196, 30, 58, 0.18);
+  --pill-border: rgba(196, 30, 58, 0.35);
+  --pill-text: #e6b85c;
+  --pill-dot: #c41e3a;
+
+  --samaam-badge-bg: rgba(230, 184, 92, 0.15);
+  --samaam-badge-border: rgba(230, 184, 92, 0.4);
+  --samaam-badge-text: #e6b85c;
+
   --header-bg: rgba(8, 4, 6, 0.85);
 
   --font-arabic-title: 'El Messiri', serif;
@@ -54,8 +64,18 @@
   --pomegranate-light: #c41e3a;
   --pomegranate-glow: rgba(168, 23, 48, 0.12);
 
-  --gold: #c29336;
-  --gold-glow: rgba(194, 147, 54, 0.15);
+  --gold: #a67417;
+  --gold-glow: rgba(166, 116, 23, 0.15);
+
+  /* Eyebrow & Badge Light Mode Colors */
+  --pill-bg: rgba(168, 23, 48, 0.08);
+  --pill-border: rgba(168, 23, 48, 0.22);
+  --pill-text: #9e1428;
+  --pill-dot: #c41e3a;
+
+  --samaam-badge-bg: rgba(166, 116, 23, 0.1);
+  --samaam-badge-border: rgba(166, 116, 23, 0.35);
+  --samaam-badge-text: #855e10;
 
   --header-bg: rgba(252, 249, 246, 0.88);
 }
@@ -246,19 +266,21 @@ section {
   gap: 8px;
   padding: 5px 14px;
   border-radius: var(--radius-full);
-  background: var(--pomegranate-glow);
-  border: 1px solid rgba(196, 30, 58, 0.3);
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
   font-size: 0.78rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--pill-text);
   margin-bottom: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .seed-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--pomegranate);
+  background: var(--pill-dot);
+  transition: background-color 0.3s ease;
 }
 
 .heading-section {
@@ -448,15 +470,18 @@ html[lang="en"] .card-title {
 }
 
 .samaam-badge {
-  display: inline-block;
-  padding: 6px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  background: rgba(230, 184, 92, 0.15);
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-size: 0.8rem;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  color: var(--pill-text);
+  font-size: 0.78rem;
   font-weight: 700;
   margin-bottom: 20px;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .samaam-title {
@@ -567,7 +592,7 @@ html[lang="en"] .samaam-title {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin-top: 14px;
+  margin-top: 24px;
   font-size: 0.82rem;
   color: var(--text-muted);
   opacity: 0.85;
