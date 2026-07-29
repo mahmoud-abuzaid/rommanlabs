@@ -312,12 +312,14 @@
           </p>
 
           <form class="form-group" id="contact-form">
+            <!-- Honeypot Field (حماية من السبام) -->
+            <input type="text" name="_honey" id="contact-honey" style="display:none !important;" tabindex="-1" autocomplete="off" />
             <input type="email" id="contact-email" class="email-input" placeholder="أدخل البريد الإلكتروني..." data-ar="أدخل البريد الإلكتروني..." data-en="Enter your email address..." required />
             <button type="submit" id="contact-submit" class="btn-primary">
               <span data-ar="تواصل معنا" data-en="Get in Touch">تواصل معنا</span>
             </button>
           </form>
-          <div id="form-feedback" class="form-feedback"></div>
+          <div id="form-feedback" class="form-feedback-card"></div>
         </div>
       </div>
     </section>

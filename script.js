@@ -169,21 +169,60 @@ function initCursorFollower() {
 }
 
 /* ==========================================================================
-   6. CONTACT FORM SUBMISSION (GitHub Pages Compatible)
+   6. CONTACT FORM SUBMISSION (With Location Metadata & Professional UI)
    ========================================================================== */
+async function getGeoMetadata() {
+  const meta = {
+    ip: 'غير معروف',
+    country: 'غير معروف',
+    city: 'غير معروف',
+    org: 'غير معروف',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'غير معروف',
+    language: navigator.language || 'ar',
+    screen: `${window.screen.width}x${window.screen.height}`,
+    userAgent: navigator.userAgent
+  };
+
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1800);
+
+    const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+    clearTimeout(timeoutId);
+
+    if (res.ok) {
+      const data = await res.json();
+      meta.ip = data.ip || meta.ip;
+      meta.country = data.country_name || meta.country;
+      meta.city = data.city || meta.city;
+      meta.org = data.org || meta.org;
+    }
+  } catch (e) {
+    // Fallback if IP lookup fails or times out
+  }
+  return meta;
+}
+
 function initContactForm() {
   const form = document.getElementById('contact-form');
   const emailInput = document.getElementById('contact-email');
+  const honeyInput = document.getElementById('contact-honey');
   const submitBtn = document.getElementById('contact-submit');
   const feedback = document.getElementById('form-feedback');
 
   if (!form) return;
 
-  // FormSubmit secure random token (حماية البريد الإلكتروني من الـ Spam)
   const FORMSUBMIT_TOKEN = '63044dcb243f3a64704b00e72500939c';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // 1. فحص حقل المصيدة (Honeypot) للتصدي للروبوتات
+    if (honeyInput && honeyInput.value !== '') {
+      console.warn('Bot detected via honeypot.');
+      return;
+    }
+
     const email = emailInput.value.trim();
     if (!email) return;
 
@@ -195,11 +234,15 @@ function initContactForm() {
     submitBtn.disabled = true;
     submitBtn.style.opacity = '0.7';
     if (btnSpan) {
-      btnSpan.textContent = currentLang === 'en' ? 'Sending...' : 'جاري الإرسال...';
+      btnSpan.textContent = currentLang === 'en' ? 'Processing...' : 'جاري معالجة الطلب...';
     }
 
-    feedback.className = 'form-feedback';
+    feedback.className = 'form-feedback-card';
     feedback.style.display = 'none';
+
+    // 2. جلب معلومات موقع وجهاز الزائر
+    const geo = await getGeoMetadata();
+    const locationStr = geo.country !== 'غير معروف' ? `${geo.city}, ${geo.country}` : 'موقع غير معروف';
 
     try {
       const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_TOKEN}`, {
@@ -209,17 +252,41 @@ function initContactForm() {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          email: email,
-          _subject: 'طلب تواصل جديد من موقع Romman Labs',
-          _template: 'table'
+          _subject: `طلب تواصل جديد من [${locationStr}]`,
+          "البريد الإلكتروني": email,
+          "الموقع الجغرافي": `${geo.city} - ${geo.country}`,
+          "عنوان الـ IP": geo.ip,
+          "مزود الإنترنت (ISP)": geo.org,
+          "المنطقة الزمنية": geo.timezone,
+          "لغة المتصفح": geo.language,
+          "دقة الشاشة": geo.screen,
+          "نوع الجهاز والمتصفح": geo.userAgent,
+          "وقت الإرسال": new Date().toLocaleString(currentLang === 'en' ? 'en-US' : 'ar-SA')
         })
       });
 
       if (response.ok) {
-        feedback.textContent = currentLang === 'en'
-          ? 'Thank you! We received your email and will get in touch soon.'
-          : 'شكراً لتواصلك! استلمنا بريدك وسيتواصل معك فريق رمان لابز قريباً.';
-        feedback.className = 'form-feedback success';
+        // إخفاء نموذج الإدخال وعرض بطاقة النجاح الاحترافية
+        form.style.display = 'none';
+
+        const successTitle = currentLang === 'en'
+          ? 'Request Received Successfully!'
+          : 'تم استلام طلبك بنجاح!';
+        
+        const successDesc = currentLang === 'en'
+          ? 'Thank you for reaching out. The Romman Labs team will review your message and connect with you shortly.'
+          : 'شكراً لاقتطاعك جزءاً من وقتك للتواصل معنا. تم تسجيل بريدك بنجاح، وسيتواصل معك فريق رمان لابز في أقرب وقت.';
+
+        feedback.innerHTML = `
+          <div class="feedback-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </div>
+          <div class="feedback-title">${successTitle}</div>
+          <div class="feedback-desc">${successDesc}</div>
+        `;
+        feedback.className = 'form-feedback-card success';
         form.reset();
       } else {
         throw new Error('Server response not ok');
@@ -228,7 +295,8 @@ function initContactForm() {
       feedback.textContent = currentLang === 'en'
         ? 'Something went wrong. Please try again or contact us directly.'
         : 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.';
-      feedback.className = 'form-feedback error';
+      feedback.className = 'form-feedback-card error';
+      feedback.style.display = 'block';
     } finally {
       submitBtn.disabled = false;
       submitBtn.style.opacity = '1';
