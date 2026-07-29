@@ -266,8 +266,10 @@ function initContactForm() {
       });
 
       if (response.ok) {
-        // إخفاء نموذج الإدخال وعرض بطاقة النجاح الاحترافية
+        // إخفاء نموذج الإدخال وملاحظة الخصوصية وعرض بطاقة النجاح الاحترافية
         form.style.display = 'none';
+        const privacyNote = document.getElementById('privacy-note');
+        if (privacyNote) privacyNote.style.display = 'none';
 
         const successTitle = currentLang === 'en'
           ? 'Request Received Successfully!'

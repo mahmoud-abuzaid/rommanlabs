@@ -562,6 +562,22 @@ html[lang="en"] .samaam-title {
   line-height: 1.6;
 }
 
+.privacy-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+.privacy-note svg {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
 /* Footer */
 .site-footer {
   border-top: 1px solid var(--card-border);
