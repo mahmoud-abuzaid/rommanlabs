@@ -179,8 +179,8 @@ function initContactForm() {
 
   if (!form) return;
 
-  // ⚠️ ضع بريدك الإلكتروني هنا لاستلام الإشعارات والرسائل من زوار الموقع
-  const RECIPIENT_EMAIL = 'mahmoud.abuzaid@rommanlabs.com';
+  // FormSubmit secure random token (حماية البريد الإلكتروني من الـ Spam)
+  const FORMSUBMIT_TOKEN = '63044dcb243f3a64704b00e72500939c';
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -202,7 +202,7 @@ function initContactForm() {
     feedback.style.display = 'none';
 
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+      const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_TOKEN}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
