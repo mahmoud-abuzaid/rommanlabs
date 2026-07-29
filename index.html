@@ -18,9 +18,14 @@
 
 <body>
 
+  <!-- Top Scroll Progress Line -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
   <!-- Background Ambient Layers -->
   <canvas id="hero-canvas"></canvas>
   <div class="ambient-grid"></div>
+  <div class="ambient-spotlight ambient-1"></div>
+  <div class="ambient-spotlight ambient-2"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
   <!-- Navigation Header -->
@@ -105,39 +110,39 @@
         </h2>
 
         <p class="subheading-section reveal-on-scroll"
-           data-ar="تعتمد القطاعات الحيوية في يومياتها على قرارات سريعة وتدفقات مالية معقدة. عندما تتشتت الاعتمادات بين الورق والبريد والمحادثات الشفهية، يقع التسرب المالي وتتأخر المشاريع."
-           data-en="Critical industries rely on quick decisions and complex approvals daily. When workflows get scattered across paper, messaging, and emails, capital leaks and operations stall.">
-          تعتمد القطاعات الحيوية في يومياتها على قرارات سريعة وتدفقات مالية معقدة. عندما تتشتت الاعتمادات بين الورق والبريد والمحادثات الشفهية، يقع التسرب المالي وتتأخر المشاريع.
+           data-ar="تعتمد القطاعات الحيوية على قرارات تشغيلية حاسمة وتدفقات معقدة. ومع تزايد حجم الأعمال وتعدد مسارات العمل، تنشأ ثغرات غير منظورة ترفع من حجم المخاطر وتؤثر على كفاءة الإنجاز."
+           data-en="Critical industries operate in high-stakes environments where precision and speed are non-negotiable. As operations scale and workflows multiply, unseen friction arises — compromising efficiency and elevating operational risk.">
+          تعتمد القطاعات الحيوية على قرارات تشغيلية حاسمة وتدفقات معقدة. ومع تزايد حجم الأعمال وتعدد مسارات العمل، تنشأ ثغرات غير منظورة ترفع من حجم المخاطر وتؤثر على كفاءة الإنجاز.
         </p>
 
         <div class="cards-grid">
           <div class="card-item reveal-on-scroll">
             <div class="card-icon">⚙️</div>
-            <h3 class="card-title" data-ar="تشتت سلاسل الاعتماد" data-en="Scattered Approval Loops">تشتت سلاسل الاعتماد</h3>
+            <h3 class="card-title" data-ar="تعدد مسارات القرار" data-en="Fragmented Decision Loops">تعدد مسارات القرار</h3>
             <p class="card-desc"
-               data-ar="غياب مركز موحد وموثق لمتابعة الصلاحيات وأوامر الشراء الطارئة."
-               data-en="Lack of a unified, auditable hub for urgent purchasing and sign-offs.">
-              غياب مركز موحد وموثق لمتابعة الصلاحيات وأوامر الشراء الطارئة.
+               data-ar="تداخل الصلاحيات وضبابية المسؤوليات عند التعامل مع المواقف التشغيلية الحساسة."
+               data-en="Overlapping authorities and ambiguity during critical operational sign-offs.">
+              تداخل الصلاحيات وضبابية المسؤوليات عند التعامل مع المواقف التشغيلية الحساسة.
             </p>
           </div>
 
           <div class="card-item reveal-on-scroll">
             <div class="card-icon">⏳</div>
-            <h3 class="card-title" data-ar="بطء القرار التشغيلي" data-en="Operational Delays">بطء القرار التشغيلي</h3>
+            <h3 class="card-title" data-ar="بطء الاستجابة الميدانية" data-en="Operational Bottlenecks">بطء الاستجابة الميدانية</h3>
             <p class="card-desc"
-               data-ar="توقف العمل الميداني بانتظار موافقة ورقية أو إيميل قد يستغرق أياماً."
-               data-en="Field operations grinding to a halt while waiting for manual or email approvals.">
-              توقف العمل الميداني بانتظار موافقة ورقية أو إيميل قد يستغرق أياماً.
+               data-ar="تأخر اتخاذ القرار وتجميد العمليات نتيجة الآليات التقليدية والانتظار غير المبرر."
+               data-en="Stalled field execution and sluggish decision loops caused by traditional bottlenecks.">
+              تأخر اتخاذ القرار وتجميد العمليات نتيجة الآليات التقليدية والانتظار غير المبرر.
             </p>
           </div>
 
           <div class="card-item reveal-on-scroll">
             <div class="card-icon">🌱</div>
-            <h3 class="card-title" data-ar="صعوبة الدمج الشامل" data-en="Accessibility Gaps">صعوبة الدمج الشامل</h3>
+            <h3 class="card-title" data-ar="فجوات التمكين الرقمي" data-en="Inclusion & Usability Gaps">فجوات التمكين الرقمي</h3>
             <p class="card-desc"
-               data-ar="إغفال تصميم الواجهات الشاملة التي تمكّن كافة فئات فريق العمل بمختلف قدراتهم."
-               data-en="Neglecting inclusive design that empowers team members of all abilities.">
-              إغفال تصميم الواجهات الشاملة التي تمكّن كافة فئات فريق العمل بمختلف قدراتهم.
+               data-ar="صعوبة استيعاب كافة فئات فريق العمل، مما يحد من سلاسة التواصل الشامل والأداء التكاملي."
+               data-en="Friction in empowering every operational tier, limiting seamless cross-team performance.">
+              صعوبة استيعاب كافة فئات فريق العمل، مما يحد من سلاسة التواصل الشامل والأداء التكاملي.
             </p>
           </div>
         </div>
@@ -284,6 +289,21 @@
              data-en="Sometimes a minor oversight carries an immense cost. We are building a system to catch critical moments before they slip away — and seal vulnerabilities before they open. Coming soon, you will discover why we called it Samaam.">
             في بعض الأحيان، القرار الصغير يحمل ثمنًا كبيرًا... نبني أداة تُحكم اللحظة قبل أن تفلت، وتغلق الثغرة قبل أن تنفتح. قريباً، ستعرف لماذا سمّيناه صمّام.
           </p>
+
+          <div class="samaam-highlights">
+            <div class="highlight-chip">
+              <span class="chip-icon">⚡</span>
+              <span data-ar="استجابة لحظية للميدان" data-en="Real-time Field Control">استجابة لحظية للميدان</span>
+            </div>
+            <div class="highlight-chip">
+              <span class="chip-icon">🛡️</span>
+              <span data-ar="إغلاق ثغرات التسرب" data-en="Zero Risk Leakage">إغلاق ثغرات التسرب</span>
+            </div>
+            <div class="highlight-chip">
+              <span class="chip-icon">🔒</span>
+              <span data-ar="حوكمة دقيقة للقرارات" data-en="Auditable Governance">حوكمة دقيقة للقرارات</span>
+            </div>
+          </div>
 
           <a href="#future" class="btn-primary">
             <span data-ar="كن جزءاً من الإطلاق التجريبي" data-en="Join Early Private Testing">كن جزءاً من الإطلاق التجريبي</span>

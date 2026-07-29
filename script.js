@@ -9,7 +9,40 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroCanvas();
   initCursorFollower();
   initContactForm();
+  initScrollProgress();
+  initCardSpotlights();
 });
+
+/* ==========================================================================
+   0. SCROLL PROGRESS BAR
+   ========================================================================== */
+function initScrollProgress() {
+  const progressBar = document.getElementById('scroll-progress');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = `${scrollPercent}%`;
+  }, { passive: true });
+}
+
+/* ==========================================================================
+   CARD SPOTLIGHT HOVER EFFECT
+   ========================================================================== */
+function initCardSpotlights() {
+  const cards = document.querySelectorAll('.card-item, .step-card, .samaam-card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+}
 
 /* ==========================================================================
    1. THEME MANAGEMENT (DARK / LIGHT)
@@ -115,15 +148,15 @@ function initHeroCanvas() {
   }, { passive: true });
 
   const particles = [];
-  const particleCount = 35;
+  const particleCount = 45;
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.8,
-      vy: (Math.random() - 0.5) * 0.8,
-      radius: 2.5 + Math.random() * 3,
+      vx: (Math.random() - 0.5) * 0.7,
+      vy: (Math.random() - 0.5) * 0.7,
+      radius: 2 + Math.random() * 2.5,
       color: Math.random() > 0.4 ? '#c41e3a' : '#e6b85c',
       alpha: 0.2 + Math.random() * 0.6
     });
@@ -132,6 +165,28 @@ function initHeroCanvas() {
   function render() {
     ctx.clearRect(0, 0, width, height);
 
+    // Constellation Web Connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+          const lineAlpha = (1 - dist / 120) * (currentTheme === 'dark' ? 0.16 : 0.08);
+          ctx.strokeStyle = particles[i].color;
+          ctx.globalAlpha = lineAlpha;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Render Particles
     particles.forEach(p => {
       p.x += p.vx;
       p.y += p.vy;

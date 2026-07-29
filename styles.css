@@ -107,7 +107,20 @@ html[lang="en"] body {
   direction: ltr;
 }
 
-/* Background Canvas & Grid */
+/* Top Scroll Progress Line */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--pomegranate), var(--gold), var(--pomegranate-light));
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 12px var(--pomegranate-glow);
+}
+
+/* Background Canvas, Mesh Lighting & Grid */
 #hero-canvas {
   position: fixed;
   top: 0;
@@ -125,13 +138,51 @@ html[lang="en"] body {
   background-size: 32px 32px;
   pointer-events: none;
   z-index: 2;
-  opacity: 0.5;
+  opacity: 0.45;
+}
+
+.ambient-spotlight {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(120px);
+  opacity: 0.22;
+  will-change: transform;
+}
+
+[data-theme="light"] .ambient-spotlight {
+  opacity: 0.10;
+}
+
+.ambient-1 {
+  top: -15vw;
+  right: -10vw;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, var(--pomegranate) 0%, transparent 70%);
+  animation: ambientFloat 20s ease-in-out infinite alternate;
+}
+
+.ambient-2 {
+  bottom: -15vw;
+  left: -10vw;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+  animation: ambientFloat 24s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ambientFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -50px) scale(1.08); }
+  100% { transform: translate(-30px, 40px) scale(0.95); }
 }
 
 .cursor-follower {
   position: fixed;
-  width: 280px;
-  height: 280px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   background: radial-gradient(circle, var(--pomegranate-glow) 0%, transparent 70%);
   pointer-events: none;
@@ -329,7 +380,10 @@ html[lang="en"] .hero-title {
 }
 
 .highlight-text {
-  color: var(--pomegranate);
+  background: linear-gradient(135deg, var(--pomegranate-light) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .hero-desc {
@@ -350,29 +404,44 @@ html[lang="en"] .hero-title {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 28px;
+  padding: 14px 30px;
   border-radius: var(--radius-full);
-  background: var(--pomegranate);
+  background: linear-gradient(135deg, var(--pomegranate-light) 0%, var(--pomegranate) 100%);
   color: #ffffff;
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 20px var(--pomegranate-glow);
-  transition: transform 0.2s ease, background 0.2s ease;
+  box-shadow: 0 8px 25px var(--pomegranate-glow), 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.25s var(--ease-expo), box-shadow 0.25s ease, background 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(100%);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  background: var(--pomegranate-light);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 32px var(--pomegranate-glow), 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 28px;
+  padding: 14px 30px;
   border-radius: var(--radius-full);
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -380,12 +449,16 @@ html[lang="en"] .hero-title {
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
 }
 
 .btn-secondary:hover {
   background: var(--surface-hover);
   border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--gold-glow);
 }
 
 /* Cards Grid */
@@ -400,21 +473,57 @@ html[lang="en"] .hero-title {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  padding: 34px 30px;
   position: relative;
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  overflow: hidden;
+  transition: transform 0.35s var(--ease-expo), border-color 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.card-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+[data-theme="light"] .card-item::before {
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.08), transparent);
 }
 
 .card-item:hover {
-  transform: translateY(-4px);
-  border-color: var(--pomegranate);
+  transform: translateY(-6px) scale(1.01);
+  border-color: rgba(196, 30, 58, 0.35);
   background: var(--surface-color);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3), 0 0 20px var(--pomegranate-glow);
+}
+
+[data-theme="light"] .card-item:hover {
+  box-shadow: 0 16px 36px -12px rgba(168, 23, 48, 0.12);
 }
 
 .card-icon {
-  font-size: 2rem;
-  margin-bottom: 16px;
-  display: inline-block;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--surface-color);
+  border: 1px solid var(--card-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card-item:hover .card-icon {
+  transform: scale(1.1) rotate(-3deg);
+  border-color: var(--pomegranate);
 }
 
 .card-title {
@@ -447,15 +556,35 @@ html[lang="en"] .card-title {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
-  padding: 36px 28px;
+  padding: 38px 30px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.35s var(--ease-expo), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25), 0 0 20px var(--gold-glow);
 }
 
 .step-num {
   font-family: var(--font-latin-title);
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: var(--gold);
+  background: linear-gradient(135deg, var(--gold) 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+[data-theme="light"] .step-num {
+  background: linear-gradient(135deg, var(--gold) 0%, #855e10 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Samaam Product Card */
@@ -463,10 +592,59 @@ html[lang="en"] .card-title {
   background: var(--surface-color);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-lg);
-  padding: clamp(32px, 5vw, 56px);
+  padding: clamp(36px, 6vw, 64px);
   margin-top: 40px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.samaam-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 20%, var(--pomegranate-glow) 0%, transparent 50%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.samaam-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 36px;
+  position: relative;
+  z-index: 2;
+}
+
+.highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-main);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.highlight-chip:hover {
+  border-color: var(--pomegranate);
+  transform: translateY(-2px);
+  background: var(--surface-hover);
+  box-shadow: 0 4px 14px var(--pomegranate-glow);
+}
+
+.chip-icon {
+  font-size: 1rem;
 }
 
 .samaam-badge {
