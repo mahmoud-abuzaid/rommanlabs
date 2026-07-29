@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveals();
   initHeroCanvas();
   initCursorFollower();
+  initContactForm();
 });
 
 /* ==========================================================================
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function initTheme() {
   const themeToggleBtn = document.getElementById('theme-toggle');
   const savedTheme = localStorage.getItem('romman-theme') || 'dark';
-  
+
   applyTheme(savedTheme);
 
   if (themeToggleBtn) {
@@ -165,4 +166,75 @@ function initCursorFollower() {
     posY += (e.clientY - posY) * 0.15;
     follower.style.transform = `translate3d(${e.clientX - 140}px, ${e.clientY - 140}px, 0)`;
   }, { passive: true });
+}
+
+/* ==========================================================================
+   6. CONTACT FORM SUBMISSION (GitHub Pages Compatible)
+   ========================================================================== */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const emailInput = document.getElementById('contact-email');
+  const submitBtn = document.getElementById('contact-submit');
+  const feedback = document.getElementById('form-feedback');
+
+  if (!form) return;
+
+  // ⚠️ ضع بريدك الإلكتروني هنا لاستلام الإشعارات والرسائل من زوار الموقع
+  const RECIPIENT_EMAIL = 'mahmoud.abuzaid@rommanlabs.com';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    const currentLang = document.documentElement.getAttribute('lang') || 'ar';
+    const btnSpan = submitBtn.querySelector('span');
+    const originalText = btnSpan ? btnSpan.textContent : submitBtn.textContent;
+
+    // حالة الإرسال
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+    if (btnSpan) {
+      btnSpan.textContent = currentLang === 'en' ? 'Sending...' : 'جاري الإرسال...';
+    }
+
+    feedback.className = 'form-feedback';
+    feedback.style.display = 'none';
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          _subject: 'طلب تواصل جديد من موقع Romman Labs',
+          _template: 'table'
+        })
+      });
+
+      if (response.ok) {
+        feedback.textContent = currentLang === 'en'
+          ? 'Thank you! We received your email and will get in touch soon.'
+          : 'شكراً لتواصلك! استلمنا بريدك وسيتواصل معك فريق رمان لابز قريباً.';
+        feedback.className = 'form-feedback success';
+        form.reset();
+      } else {
+        throw new Error('Server response not ok');
+      }
+    } catch (err) {
+      feedback.textContent = currentLang === 'en'
+        ? 'Something went wrong. Please try again or contact us directly.'
+        : 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.';
+      feedback.className = 'form-feedback error';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+      if (btnSpan) {
+        btnSpan.textContent = originalText;
+      }
+    }
+  });
 }

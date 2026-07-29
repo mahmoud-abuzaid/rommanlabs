@@ -311,12 +311,13 @@
             نحضر للإطلاق التدريجي لمنتجاتنا بالتعاون مع شركاء مبكرين. يسعدنا التواصل وسماع تحدياتكم التشغيلية.
           </p>
 
-          <form class="form-group" onsubmit="event.preventDefault(); alert(document.documentElement.getAttribute('lang') === 'en' ? 'Thank you! We will reach out soon.' : 'شكراً لتواصلك! سيتواصل معك فريق رمان لابز قريباً.');">
-            <input type="email" class="email-input" placeholder="أدخل البريد الإلكتروني..." data-ar="أدخل البريد الإلكتروني..." data-en="Enter your email address..." required />
-            <button type="submit" class="btn-primary">
+          <form class="form-group" id="contact-form">
+            <input type="email" id="contact-email" class="email-input" placeholder="أدخل البريد الإلكتروني..." data-ar="أدخل البريد الإلكتروني..." data-en="Enter your email address..." required />
+            <button type="submit" id="contact-submit" class="btn-primary">
               <span data-ar="تواصل معنا" data-en="Get in Touch">تواصل معنا</span>
             </button>
           </form>
+          <div id="form-feedback" class="form-feedback"></div>
         </div>
       </div>
     </section>
