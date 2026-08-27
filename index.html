@@ -1,376 +1,43 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="dark">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>رمان لابز | Romman Labs — حلول رقمية ذكية للقطاعات الصناعية والتجارية</title>
-  <meta name="description"
-    content="رمان لابز — نؤمن بأن التكنولوجيا الجيدة تُصنع مع الناس. نركّز على بناء حلول رقمية ذكية للقطاعات الصناعية والتجارية. أول منتج: صمام." />
-  <meta name="theme-color" content="#080406" />
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="logo.svg" />
-
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رمان لابز | منتجات رقمية للعمليات الميدانية</title>
+  <meta name="description" content="نحوّل تعقيدات العمل الميداني إلى منتجات رقمية واضحة، آمنة، وقابلة للتوسع.">
+  <meta name="theme-color" content="#10090b"><link rel="icon" href="logo.svg"><link rel="stylesheet" href="styles.css?v=2">
 </head>
-
 <body>
-
-  <!-- Top Scroll Progress Line -->
-  <div class="scroll-progress" id="scroll-progress"></div>
-
-  <!-- Background Ambient Layers -->
-  <canvas id="hero-canvas"></canvas>
-  <div class="ambient-grid"></div>
-  <div class="ambient-spotlight ambient-1"></div>
-  <div class="ambient-spotlight ambient-2"></div>
-  <div class="cursor-follower" id="cursor-follower"></div>
-
-  <!-- Navigation Header -->
-  <header class="site-header">
-    <a href="#" class="brand-wrapper">
-      <div class="brand-logo-frame">
-        <img src="logo.svg" alt="Romman Labs Logo" />
-      </div>
-      <span class="brand-title" data-ar="رمان لابز" data-en="Romman Labs">رمان لابز</span>
-    </a>
-
-    <nav aria-label="Main Navigation">
-      <ul class="nav-menu">
-        <li><a href="#problem" class="nav-link" data-ar="المشكلة" data-en="The Problem">المشكلة</a></li>
-        <li><a href="#philosophy" class="nav-link" data-ar="الفلسفة" data-en="Philosophy">الفلسفة</a></li>
-        <li><a href="#sectors" class="nav-link" data-ar="القطاعات" data-en="Sectors">القطاعات</a></li>
-        <li><a href="#samaam" class="nav-link" data-ar="مشروع صمام" data-en="Project Samaam">مشروع صمام</a></li>
-        <li><a href="#future" class="nav-link" data-ar="المستقبل" data-en="The Future">المستقبل</a></li>
-      </ul>
-    </nav>
-
-    <div class="header-controls">
-      <button class="control-btn" id="lang-toggle" aria-label="Switch Language">
-        🌐 <span id="lang-text">English</span>
-      </button>
-
-      <button class="control-btn" id="theme-toggle" aria-label="Switch Theme">
-        <span id="theme-icon">☀️</span>
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO SECTION -->
-    <section class="hero-section">
-      <div class="container">
-        <div class="hero-content">
-          <div class="eyebrow-pill reveal-on-scroll">
-            <span class="seed-dot"></span>
-            <span data-ar="رمان لابز · مختبر ابتكار ومنتجات تقنية" data-en="ROMMAN LABS · PRODUCT INNOVATION LAB">رمان لابز · مختبر ابتكار ومنتجات تقنية</span>
-          </div>
-
-          <h1 class="hero-title reveal-on-scroll">
-            <span data-ar="من واقع الخبرة الميدانية..." data-en="From Field Expertise">من واقع الخبرة الميدانية...</span>
-            <span class="highlight-text" data-ar="نبني منتجات تقنية ريادية." data-en="to Scalable Technology.">نبني منتجات تقنية ريادية.</span>
-          </h1>
-
-          <p class="hero-desc reveal-on-scroll"
-             data-ar="بعد سنوات من تقديم الاستشارات والحلول الخاصة للقطاعات الحيوية، ننقل خبرتنا الميدانية لنبني منتجات تقنية ريادية تُعالج التحديات التشغيلية وتُحكم السيطرة على المخاطر."
-             data-en="Evolving years of specialized industrial consulting into scalable digital products — purpose-built to streamline complex operations and eliminate risk.">
-            بعد سنوات من تقديم الاستشارات والحلول الخاصة للقطاعات الحيوية، ننقل خبرتنا الميدانية لنبني منتجات تقنية ريادية تُعالج التحديات التشغيلية وتُحكم السيطرة على المخاطر.
-          </p>
-
-          <div class="hero-actions reveal-on-scroll">
-            <a href="#samaam" class="btn-primary">
-              <span data-ar="تعرّف على مشروع صمّام" data-en="Discover Project Samaam">تعرّف على مشروع صمّام</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-              </svg>
-            </a>
-
-            <a href="#philosophy" class="btn-secondary">
-              <span data-ar="فلسفتنا في البناء" data-en="Our Philosophy">فلسفتنا في البناء</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 1: THE PROBLEM (المشكلة) -->
-    <section id="problem">
-      <div class="container">
-        <div class="eyebrow-pill reveal-on-scroll">
-          <span class="seed-dot"></span>
-          <span data-ar="المشكلة التي نعالجها" data-en="THE PROBLEM WE ADDRESS">المشكلة التي نعالجها</span>
-        </div>
-
-        <h2 class="heading-section reveal-on-scroll"
-            data-ar="التعقيد البيروقراطي في العمليات الميدانية"
-            data-en="Operational friction in high-stakes environments">
-          التعقيد البيروقراطي في العمليات الميدانية
-        </h2>
-
-        <p class="subheading-section reveal-on-scroll"
-           data-ar="تعتمد القطاعات الحيوية على قرارات تشغيلية حاسمة وتدفقات معقدة. ومع تزايد حجم الأعمال وتعدد مسارات العمل، تنشأ ثغرات غير منظورة ترفع من حجم المخاطر وتؤثر على كفاءة الإنجاز."
-           data-en="Critical industries operate in high-stakes environments where precision and speed are non-negotiable. As operations scale and workflows multiply, unseen friction arises — compromising efficiency and elevating operational risk.">
-          تعتمد القطاعات الحيوية على قرارات تشغيلية حاسمة وتدفقات معقدة. ومع تزايد حجم الأعمال وتعدد مسارات العمل، تنشأ ثغرات غير منظورة ترفع من حجم المخاطر وتؤثر على كفاءة الإنجاز.
-        </p>
-
-        <div class="cards-grid">
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">⚙️</div>
-            <h3 class="card-title" data-ar="تعدد مسارات القرار" data-en="Fragmented Decision Loops">تعدد مسارات القرار</h3>
-            <p class="card-desc"
-               data-ar="تداخل الصلاحيات وضبابية المسؤوليات عند التعامل مع المواقف التشغيلية الحساسة."
-               data-en="Overlapping authorities and ambiguity during critical operational sign-offs.">
-              تداخل الصلاحيات وضبابية المسؤوليات عند التعامل مع المواقف التشغيلية الحساسة.
-            </p>
-          </div>
-
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">⏳</div>
-            <h3 class="card-title" data-ar="بطء الاستجابة الميدانية" data-en="Operational Bottlenecks">بطء الاستجابة الميدانية</h3>
-            <p class="card-desc"
-               data-ar="تأخر اتخاذ القرار وتجميد العمليات نتيجة الآليات التقليدية والانتظار غير المبرر."
-               data-en="Stalled field execution and sluggish decision loops caused by traditional bottlenecks.">
-              تأخر اتخاذ القرار وتجميد العمليات نتيجة الآليات التقليدية والانتظار غير المبرر.
-            </p>
-          </div>
-
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">🌱</div>
-            <h3 class="card-title" data-ar="فجوات التمكين الرقمي" data-en="Inclusion & Usability Gaps">فجوات التمكين الرقمي</h3>
-            <p class="card-desc"
-               data-ar="صعوبة استيعاب كافة فئات فريق العمل، مما يحد من سلاسة التواصل الشامل والأداء التكاملي."
-               data-en="Friction in empowering every operational tier, limiting seamless cross-team performance.">
-              صعوبة استيعاب كافة فئات فريق العمل، مما يحد من سلاسة التواصل الشامل والأداء التكاملي.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2: PHILOSOPHY (الفلسفة) -->
-    <section id="philosophy">
-      <div class="container">
-        <div class="eyebrow-pill reveal-on-scroll">
-          <span class="seed-dot"></span>
-          <span data-ar="فلسفة رمان" data-en="OUR PHILOSOPHY">فلسفة رمان</span>
-        </div>
-
-        <h2 class="heading-section reveal-on-scroll"
-            data-ar="رمزية الرمانة: تنظيم متقن وحماية للقيمة"
-            data-en="The Pomegranate Principle: Structured Harmony & Asset Protection">
-          رمزية الرمانة: تنظيم متقن وحماية للقيمة
-        </h2>
-
-        <p class="subheading-section reveal-on-scroll"
-           data-ar="رمز الرمانة يمثل حبات عديدة تتجمع بنظام دقيق داخل غلاف حامي. نأخذ الخبرات والحلول الاستشارية المخصصة التي صممناها عبر السنين، ونُحولها إلى منتجات تقنية عامة تمكّن المؤسسات وتلبي احتياجات الميدان."
-           data-en="A pomegranate holds structured seeds beneath a protective shell. We transform years of tailored consulting insights into standardized software products — empowering industries with control and clarity.">
-          رمز الرمانة يمثل حبات عديدة تتجمع بنظام دقيق داخل غلاف حامي. نأخذ الخبرات والحلول الاستشارية المخصصة التي صممناها عبر السنين، ونُحولها إلى منتجات تقنية عامة تمكّن المؤسسات وتلبي احتياجات الميدان.
-        </p>
-
-        <div class="philosophy-grid">
-          <div class="step-card reveal-on-scroll">
-            <div class="step-num">01</div>
-            <h3 class="card-title" data-ar="الفوضى (Chaos)" data-en="Chaos">الفوضى (Chaos)</h3>
-            <p class="card-desc"
-               data-ar="البداية من استيعاب التفاصيل المشتتة والعمليات المعقدة لدى الشريك."
-               data-en="Unpacking scattered processes and complex operational realities.">
-              البداية من استيعاب التفاصيل المشتتة والعمليات المعقدة لدى الشريك.
-            </p>
-          </div>
-
-          <div class="step-card reveal-on-scroll">
-            <div class="step-num">02</div>
-            <h3 class="card-title" data-ar="التنظيم (Organization)" data-en="Organization">التنظيم (Organization)</h3>
-            <p class="card-desc"
-               data-ar="ترتيب الصلاحيات وتصميم مسارات عمل بسيطة وسلسة للجميع."
-               data-en="Structuring permissions into intuitive, friction-free workflows.">
-              ترتيب الصلاحيات وتصميم مسارات عمل بسيطة وسلسة للجميع.
-            </p>
-          </div>
-
-          <div class="step-card reveal-on-scroll">
-            <div class="step-num">03</div>
-            <h3 class="card-title" data-ar="التحكم (Control)" data-en="Control">التحكم (Control)</h3>
-            <p class="card-desc"
-               data-ar="منح الإدارة والميدان رؤية شفافة وتأكيد دقيق يمنع التسرب والخطأ."
-               data-en="Providing leaders and field teams real-time visibility and full auditability.">
-              منح الإدارة والميدان رؤية شفافة وتأكيد دقيق يمنع التسرب والخطأ.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: SECTORS (القطاعات والمجالات) -->
-    <section id="sectors">
-      <div class="container">
-        <div class="eyebrow-pill reveal-on-scroll">
-          <span class="seed-dot"></span>
-          <span data-ar="مجالات التركيز" data-en="SECTORS & FOCUS AREAS">مجالات التركيز</span>
-        </div>
-
-        <h2 class="heading-section reveal-on-scroll"
-            data-ar="نركز على القطاعات الحيوية والتجارية"
-            data-en="Powering Industrial & Commercial Sectors">
-          نركز على القطاعات الحيوية والتجارية
-        </h2>
-
-        <div class="cards-grid">
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">🤝</div>
-            <h3 class="card-title" data-ar="التجارة والتعاقدات" data-en="Commerce & Procurement">التجارة والتعاقدات</h3>
-            <p class="card-desc"
-               data-ar="تيسير عقود التوريد وإدارتها بوضوح بين جميع الأطراف."
-               data-en="Streamlining vendor contracts and commercial supply agreements.">
-              تيسير عقود التوريد وإدارتها بوضوح بين جميع الأطراف.
-            </p>
-          </div>
-
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">🏗️</div>
-            <h3 class="card-title" data-ar="المقاولات والبناء" data-en="Construction & Contracting">المقاولات والبناء</h3>
-            <p class="card-desc"
-               data-ar="ربط الميدان بالإدارة المالية وتأمين موافقات المواد والمعدات."
-               data-en="Connecting job sites with finance to secure material sign-offs seamlessly.">
-              ربط الميدان بالإدارة المالية وتأمين موافقات المواد والمعدات.
-            </p>
-          </div>
-
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">🚛</div>
-            <h3 class="card-title" data-ar="سلاسل الإمداد" data-en="Supply Chain & Logistics">سلاسل الإمداد</h3>
-            <p class="card-desc"
-               data-ar="تتبع الحركة التشغيلية وتقليل الاحتكاك في الشحن والتوزيع."
-               data-en="Minimizing operational friction across shipping and distribution loops.">
-              تتبع الحركة التشغيلية وتقليل الاحتكاك في الشحن والتوزيع.
-            </p>
-          </div>
-
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">📦</div>
-            <h3 class="card-title" data-ar="تتبع الأصول" data-en="Asset Management">تتبع الأصول</h3>
-            <p class="card-desc"
-               data-ar="حوكمة حركة المعدات والأصول الثمينة برؤية فورية."
-               data-en="Real-time governance and visibility over heavy machinery and high-value assets.">
-              حوكمة حركة المعدات والأصول الثمينة برؤية فورية.
-            </p>
-          </div>
-
-          <div class="card-item reveal-on-scroll">
-            <div class="card-icon">♿</div>
-            <h3 class="card-title" data-ar="دمج ذوي الاحتياجات الخاصة" data-en="Inclusive Design & Accessibility">دمج ذوي الاحتياجات الخاصة</h3>
-            <p class="card-desc"
-               data-ar="بناء واجهات سهلة الوصول تلائم جميع قدرات طاقم العمل بكرامة وسلاسة."
-               data-en="Designing accessible software that empowers every team member with dignity.">
-              بناء واجهات سهلة الوصول تلائم جميع قدرات طاقم العمل بكرامة وسلاسة.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: PROJECT SAMAAM (مشروع صمام) -->
-    <section id="samaam">
-      <div class="container">
-        <div class="samaam-card reveal-on-scroll">
-          <div class="samaam-badge">
-            <span class="seed-dot"></span>
-            <span data-ar="أول منتج من رمان لابز" data-en="FLAGSHIP PRODUCT">أول منتج من رمان لابز</span>
-          </div>
-
-          <h2 class="samaam-title">
-            <span data-ar="صمّـام — قريباً جداً" data-en="Samaam — Launching Soon">صمّـام — قريباً جداً</span>
-          </h2>
-
-          <p class="subheading-section" style="margin-bottom: 28px; font-style: italic;"
-             data-ar="في بعض الأحيان، القرار الصغير يحمل ثمنًا كبيرًا... نبني أداة تُحكم اللحظة قبل أن تفلت، وتغلق الثغرة قبل أن تنفتح. قريباً، ستعرف لماذا سمّيناه صمّام."
-             data-en="Sometimes a minor oversight carries an immense cost. We are building a system to catch critical moments before they slip away — and seal vulnerabilities before they open. Coming soon, you will discover why we called it Samaam.">
-            في بعض الأحيان، القرار الصغير يحمل ثمنًا كبيرًا... نبني أداة تُحكم اللحظة قبل أن تفلت، وتغلق الثغرة قبل أن تنفتح. قريباً، ستعرف لماذا سمّيناه صمّام.
-          </p>
-
-          <div class="samaam-highlights">
-            <div class="highlight-chip">
-              <span class="chip-icon">⚡</span>
-              <span data-ar="استجابة لحظية للميدان" data-en="Real-time Field Control">استجابة لحظية للميدان</span>
-            </div>
-            <div class="highlight-chip">
-              <span class="chip-icon">🛡️</span>
-              <span data-ar="إغلاق ثغرات التسرب" data-en="Zero Risk Leakage">إغلاق ثغرات التسرب</span>
-            </div>
-            <div class="highlight-chip">
-              <span class="chip-icon">🔒</span>
-              <span data-ar="حوكمة دقيقة للقرارات" data-en="Auditable Governance">حوكمة دقيقة للقرارات</span>
-            </div>
-          </div>
-
-          <a href="#future" class="btn-primary">
-            <span data-ar="كن جزءاً من الإطلاق التجريبي" data-en="Join Early Private Testing">كن جزءاً من الإطلاق التجريبي</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: THE FUTURE (المستقبل والتواصل) -->
-    <section id="future">
-      <div class="container">
-        <div class="cta-box reveal-on-scroll">
-          <div class="eyebrow-pill">
-            <span class="seed-dot"></span>
-            <span data-ar="المستقبل والنمو" data-en="THE FUTURE & GROWTH">المستقبل والنمو</span>
-          </div>
-
-          <h2 class="heading-section" data-ar="نستمع أولاً، ثم نبني سوياً" data-en="We Listen First, Then Build Together">
-            نستمع أولاً، ثم نبني سوياً
-          </h2>
-
-          <p class="subheading-section" style="margin: 0 auto 32px;"
-             data-ar="نحضر للإطلاق التدريجي لمنتجاتنا بالتعاون مع شركاء مبكرين. يسعدنا التواصل وسماع تحدياتكم التشغيلية."
-             data-en="We are preparing a selective rollout alongside early design partners. Connect with us to discuss your operational challenges.">
-            نحضر للإطلاق التدريجي لمنتجاتنا بالتعاون مع شركاء مبكرين. يسعدنا التواصل وسماع تحدياتكم التشغيلية.
-          </p>
-
-          <form class="form-group" id="contact-form">
-            <!-- Honeypot Field (حماية من السبام) -->
-            <input type="text" name="_honey" id="contact-honey" style="display:none !important;" tabindex="-1" autocomplete="off" />
-            <input type="email" id="contact-email" class="email-input" placeholder="أدخل البريد الإلكتروني..." data-ar="أدخل البريد الإلكتروني..." data-en="Enter your email address..." required />
-            <button type="submit" id="contact-submit" class="btn-primary">
-              <span data-ar="تواصل معنا" data-en="Get in Touch">تواصل معنا</span>
-            </button>
-          </form>
-          
-          <div class="privacy-note" id="privacy-note">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-            <span data-ar="نحترم خصوصيتك 100%. لن نرسل أي رسائل مزعجة أو نصل إلى بياناتك الخاصة." data-en="100% Privacy guaranteed. Zero spam, zero data sharing.">نحترم خصوصيتك 100%. لن نرسل أي رسائل مزعجة أو نصل إلى بياناتك الخاصة.</span>
-          </div>
-
-          <div id="form-feedback" class="form-feedback-card"></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- SITE FOOTER -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <span data-ar="© 2026 رمان لابز (Romman Labs). جميع الحقوق محفوظة." data-en="© 2026 Romman Labs. All rights reserved.">© 2026 رمان لابز (Romman Labs). جميع الحقوق محفوظة.</span>
-      </div>
-      <div>
-        <a href="mailto:hello@rommanlabs.com" style="color: var(--text-muted); text-decoration: none;">hello@rommanlabs.com</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <script src="script.js"></script>
-</body>
-
-</html>
+<a class="skip-link" href="#main" data-ar="انتقل إلى المحتوى" data-en="Skip to content">انتقل إلى المحتوى</a>
+<header class="site-header">
+  <a href="#" class="brand"><span class="brand-mark"><img src="logo.svg" alt=""></span><span><strong data-ar="رمان لابز" data-en="Romman Labs">رمان لابز</strong><small data-ar="مختبر منتجات" data-en="Product lab">مختبر منتجات</small></span></a>
+  <nav class="desktop-nav" aria-label="Main navigation"><a href="#approach" data-ar="منهجنا" data-en="Approach">منهجنا</a><a href="#samaam" data-ar="صمّام" data-en="Samaam">صمّام</a><a href="#sectors" data-ar="المجالات" data-en="Focus areas">المجالات</a><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></nav>
+  <div class="header-actions"><button class="text-control" id="lang-toggle" aria-label="Switch language"><span id="lang-text">EN</span></button><button class="icon-control" id="theme-toggle" aria-label="Switch theme"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button><button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button></div>
+  <nav class="mobile-nav" id="mobile-nav"><a href="#approach" data-ar="منهجنا" data-en="Approach">منهجنا</a><a href="#samaam" data-ar="مشروع صمّام" data-en="Project Samaam">مشروع صمّام</a><a href="#sectors" data-ar="مجالات التركيز" data-en="Focus areas">مجالات التركيز</a><a href="#contact" data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</a></nav>
+</header>
+<main id="main">
+  <section class="hero"><div class="container hero-grid">
+    <div class="hero-copy"><p class="kicker reveal" data-ar="من الميدان، إلى منتج قابل للتوسع" data-en="From field reality to scalable products">من الميدان، إلى منتج قابل للتوسع</p><h1 class="reveal" data-ar="نحوّل تعقيدات العمل الميداني إلى منتجات رقمية واضحة." data-en="We turn complex field operations into clear digital products.">نحوّل تعقيدات العمل الميداني إلى منتجات رقمية واضحة.</h1><p class="hero-lead reveal" data-ar="نفهم العملية كما تحدث فعليًا، ثم نصمم أدوات تقلّل زمن الموافقات، توضّح المسؤوليات، وتحفظ أثر كل قرار." data-en="We study operations as they actually happen, then design tools that shorten approvals, clarify ownership, and preserve every decision trail.">نفهم العملية كما تحدث فعليًا، ثم نصمم أدوات تقلّل زمن الموافقات، توضّح المسؤوليات، وتحفظ أثر كل قرار.</p><div class="hero-actions reveal"><a class="button button-primary" href="#samaam"><span data-ar="اكتشف صمّام" data-en="Discover Samaam">اكتشف صمّام</span><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a><a class="button button-quiet" href="#approach" data-ar="كيف نعمل؟" data-en="How we work">كيف نعمل؟</a></div><div class="trust-line reveal"><span data-ar="مصممة للواقع التشغيلي" data-en="Built for operational reality">مصممة للواقع التشغيلي</span><span data-ar="عربي أولًا" data-en="Arabic-first">عربي أولًا</span><span data-ar="قابلة للتدقيق" data-en="Auditable by design">قابلة للتدقيق</span></div></div>
+    <div class="product-preview reveal"><div class="preview-shell"><div class="preview-topbar"><div class="preview-brand"><img src="logo.svg" alt=""><span data-ar="صمّام" data-en="Samaam">صمّام</span></div><span class="status"><i></i><span data-ar="النظام يعمل" data-en="System active">النظام يعمل</span></span></div><div class="preview-body"><div class="preview-heading"><div><small data-ar="طلب ميداني" data-en="Field request">طلب ميداني</small><h2>#REQ-2048</h2></div><span class="priority" data-ar="أولوية عالية" data-en="High priority">أولوية عالية</span></div><div class="workflow">
+      <div class="flow-step complete"><span>1</span><div><strong data-ar="إنشاء الطلب" data-en="Request created">إنشاء الطلب</strong><small data-ar="الموقع الميداني · 09:42" data-en="Field site · 09:42">الموقع الميداني · 09:42</small></div><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></div>
+      <div class="flow-step active"><span>2</span><div><strong data-ar="مراجعة المسؤول" data-en="Supervisor review">مراجعة المسؤول</strong><small data-ar="بانتظار قرار واحد" data-en="One decision pending">بانتظار قرار واحد</small></div><i class="pulse"></i></div>
+      <div class="flow-step"><span>3</span><div><strong data-ar="التنفيذ والتوثيق" data-en="Execute & document">التنفيذ والتوثيق</strong><small data-ar="يبدأ بعد الاعتماد" data-en="Starts after approval">يبدأ بعد الاعتماد</small></div></div></div>
+      <div class="preview-metrics"><div><small data-ar="زمن المعالجة" data-en="Cycle time">زمن المعالجة</small><strong>06:18</strong></div><div><small data-ar="الأطراف" data-en="Stakeholders">الأطراف</small><strong>04</strong></div><div><small data-ar="أثر القرار" data-en="Audit trail">أثر القرار</small><strong data-ar="محفوظ" data-en="Saved">محفوظ</strong></div></div></div></div><div class="preview-caption"><span>01</span><p data-ar="واجهة تصورية توضّح فلسفة صمّام: قرار واضح، مسؤول محدد، وأثر لا يضيع." data-en="A concept interface expressing Samaam: a clear decision, a clear owner, and a trail that never gets lost.">واجهة تصورية توضّح فلسفة صمّام: قرار واضح، مسؤول محدد، وأثر لا يضيع.</p></div></div>
+  </div></section>
+  <section class="problem-band"><div class="container problem-layout"><p class="section-index">01 — <span data-ar="الفجوة" data-en="The gap">الفجوة</span></p><blockquote class="reveal" data-ar="المشكلة ليست نقص الأدوات. المشكلة أن كثيرًا من الأدوات لا ترى ما يحدث بين المكتب والميدان." data-en="The problem is not a lack of tools. Many tools cannot see what happens between the office and the field.">المشكلة ليست نقص الأدوات. المشكلة أن كثيرًا من الأدوات لا ترى ما يحدث بين المكتب والميدان.</blockquote><div class="friction-list reveal"><div><span>01</span><strong data-ar="قرار بلا مالك واضح" data-en="A decision with no clear owner">قرار بلا مالك واضح</strong></div><div><span>02</span><strong data-ar="موافقة تتوقف بين القنوات" data-en="An approval lost between channels">موافقة تتوقف بين القنوات</strong></div><div><span>03</span><strong data-ar="أثر يصعب الرجوع إليه" data-en="A trail hard to retrieve">أثر يصعب الرجوع إليه</strong></div></div></div></section>
+  <section id="approach" class="section-space"><div class="container"><div class="section-head reveal"><div><p class="kicker" data-ar="منهج رمان" data-en="The Romman method">منهج رمان</p><h2 data-ar="نبدأ من العملية، لا من الشاشة." data-en="We start with the operation, not the screen.">نبدأ من العملية، لا من الشاشة.</h2></div><p data-ar="نحوّل المعرفة الميدانية المتفرقة إلى منتج مفهوم، قابل للاستخدام، وقابل للقياس." data-en="We turn fragmented field knowledge into a product that is understandable, usable, and measurable.">نحوّل المعرفة الميدانية المتفرقة إلى منتج مفهوم، قابل للاستخدام، وقابل للقياس.</p></div><div class="process reveal">
+    <article><span>01</span><h3 data-ar="نصغي ونرسم الواقع" data-en="Listen and map reality">نصغي ونرسم الواقع</h3><p data-ar="نوثّق القرارات والاستثناءات والأدوار كما تحدث فعلًا؛ لا كما يفترض الإجراء المكتوب." data-en="We document decisions, exceptions, and roles as they truly happen—not as the manual assumes.">نوثّق القرارات والاستثناءات والأدوار كما تحدث فعلًا؛ لا كما يفترض الإجراء المكتوب.</p></article>
+    <article><span>02</span><h3 data-ar="نبسّط ونختبر" data-en="Simplify and test">نبسّط ونختبر</h3><p data-ar="نختصر المسار ونختبره مع الأشخاص الذين سيستخدمونه تحت ضغط العمل اليومي." data-en="We shorten the workflow and test it with the people who use it under daily pressure.">نختصر المسار ونختبره مع الأشخاص الذين سيستخدمونه تحت ضغط العمل اليومي.</p></article>
+    <article><span>03</span><h3 data-ar="نحوّل المعرفة إلى منتج" data-en="Turn knowledge into product">نحوّل المعرفة إلى منتج</h3><p data-ar="نبني نظامًا يحفظ الصلاحيات، يوضّح الحالة، ويمنح الإدارة رؤية قابلة للتدقيق." data-en="We build a system that preserves permissions, clarifies status, and gives management an auditable view.">نبني نظامًا يحفظ الصلاحيات، يوضّح الحالة، ويمنح الإدارة رؤية قابلة للتدقيق.</p></article>
+  </div></div></section>
+  <section id="samaam" class="samaam section-space"><div class="container samaam-layout"><div class="samaam-copy reveal"><p class="section-index">02 — <span data-ar="المنتج الأول" data-en="First product">المنتج الأول</span></p><div class="product-name"><img src="logo.svg" alt=""><div><small data-ar="من رمان لابز" data-en="By Romman Labs">من رمان لابز</small><h2 data-ar="صمّام" data-en="Samaam">صمّام</h2></div></div><h3 data-ar="القرار الصحيح، في اللحظة التي لا تحتمل التأخير." data-en="The right decision, when delay is not an option.">القرار الصحيح، في اللحظة التي لا تحتمل التأخير.</h3><p data-ar="نطوّر صمّام لتنظيم الطلبات والموافقات التشغيلية الحساسة بين الميدان والإدارة، مع مسؤولية واضحة وسجل كامل لكل خطوة." data-en="We are developing Samaam to organize sensitive requests and approvals between field teams and management—with clear ownership and a complete trail.">نطوّر صمّام لتنظيم الطلبات والموافقات التشغيلية الحساسة بين الميدان والإدارة، مع مسؤولية واضحة وسجل كامل لكل خطوة.</p><a class="text-link" href="#contact"><span data-ar="ناقش معنا حالة استخدام" data-en="Discuss a use case">ناقش معنا حالة استخدام</span><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></a></div><div class="outcomes reveal">
+    <article><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3"/></svg><div><h4 data-ar="حالة واحدة مفهومة" data-en="One clear status">حالة واحدة مفهومة</h4><p data-ar="يعرف كل طرف أين وصل الطلب، وما المطلوب منه الآن." data-en="Every party knows where the request stands and what is needed now.">يعرف كل طرف أين وصل الطلب، وما المطلوب منه الآن.</p></div></article>
+    <article><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><div><h4 data-ar="مسؤولية لا تحتمل اللبس" data-en="Unambiguous ownership">مسؤولية لا تحتمل اللبس</h4><p data-ar="صلاحيات محددة ومسار تصعيد واضح عند التأخير." data-en="Defined permissions and a clear escalation path when delays occur.">صلاحيات محددة ومسار تصعيد واضح عند التأخير.</p></div></article>
+    <article><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><div><h4 data-ar="سجل جاهز للتدقيق" data-en="Audit-ready trail">سجل جاهز للتدقيق</h4><p data-ar="كل قرار ووقت وتعديل محفوظ ضمن سياقه الصحيح." data-en="Every decision, timestamp, and change is preserved in context.">كل قرار ووقت وتعديل محفوظ ضمن سياقه الصحيح.</p></div></article>
+  </div></div></section>
+  <section id="sectors" class="section-space"><div class="container"><div class="section-head reveal"><div><p class="kicker" data-ar="حيث نضيف قيمة" data-en="Where we add value">حيث نضيف قيمة</p><h2 data-ar="بيئات تتطلب وضوحًا تحت الضغط." data-en="Environments that demand clarity under pressure.">بيئات تتطلب وضوحًا تحت الضغط.</h2></div><p data-ar="نركّز على العمليات التي يكلّف فيها التأخير أو غياب المعلومة وقتًا ومالًا وثقة." data-en="We focus on operations where delay or missing information costs time, money, and trust.">نركّز على العمليات التي يكلّف فيها التأخير أو غياب المعلومة وقتًا ومالًا وثقة.</p></div><div class="sector-list reveal">
+    <article><span>01</span><h3 data-ar="المقاولات والمواقع" data-en="Construction & sites">المقاولات والمواقع</h3><p data-ar="ربط الطلبات الميدانية بالموافقات المالية والإدارية." data-en="Connecting field requests with financial and administrative approvals.">ربط الطلبات الميدانية بالموافقات المالية والإدارية.</p></article><article><span>02</span><h3 data-ar="التوريد والتعاقدات" data-en="Procurement & contracts">التوريد والتعاقدات</h3><p data-ar="تنظيم التزامات الأطراف والاعتمادات عبر دورة التوريد." data-en="Organizing obligations and approvals across the supply cycle.">تنظيم التزامات الأطراف والاعتمادات عبر دورة التوريد.</p></article><article><span>03</span><h3 data-ar="الأصول واللوجستيات" data-en="Assets & logistics">الأصول واللوجستيات</h3><p data-ar="تتبّع الحركة والمسؤولية والتسليم من المصدر إلى الوجهة." data-en="Tracking movement, custody, and handoff from source to destination.">تتبّع الحركة والمسؤولية والتسليم من المصدر إلى الوجهة.</p></article>
+  </div></div></section>
+  <section id="contact" class="contact"><div class="container contact-panel reveal"><div class="contact-copy"><p class="kicker" data-ar="شركاء التصميم المبكر" data-en="Early design partners">شركاء التصميم المبكر</p><h2 data-ar="هل لديكم عملية تستحق أن تعمل بشكل أفضل؟" data-en="Do you have an operation that deserves to work better?">هل لديكم عملية تستحق أن تعمل بشكل أفضل؟</h2><p data-ar="نبحث عن فرق تواجه تحديًا تشغيليًا حقيقيًا وترغب في بناء حل عملي معنا." data-en="We are looking for teams facing a real operational challenge and willing to shape a practical solution with us.">نبحث عن فرق تواجه تحديًا تشغيليًا حقيقيًا وترغب في بناء حل عملي معنا.</p></div><div class="contact-action"><form id="contact-form" class="contact-form"><label for="contact-email" data-ar="البريد الإلكتروني للعمل" data-en="Work email">البريد الإلكتروني للعمل</label><div><input type="email" id="contact-email" data-ar="name@company.com" data-en="name@company.com" placeholder="name@company.com" required autocomplete="email"><button id="contact-submit" type="submit"><span data-ar="ابدأ الحديث" data-en="Start a conversation">ابدأ الحديث</span><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button></div></form><p class="privacy" data-ar="سنستخدم بريدك للرد على طلبك فقط." data-en="We will only use your email to respond to your request.">سنستخدم بريدك للرد على طلبك فقط.</p><div id="form-feedback" class="form-feedback" role="status"></div></div></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div class="footer-brand"><img src="logo.svg" alt=""><div><strong data-ar="رمان لابز" data-en="Romman Labs">رمان لابز</strong><p data-ar="منتجات رقمية من واقع الخبرة الميدانية." data-en="Digital products grounded in field experience.">منتجات رقمية من واقع الخبرة الميدانية.</p></div></div><a href="mailto:hello@rommanlabs.com">hello@rommanlabs.com</a><p data-ar="© 2026 رمان لابز. جميع الحقوق محفوظة." data-en="© 2026 Romman Labs. All rights reserved.">© 2026 رمان لابز. جميع الحقوق محفوظة.</p></div></footer>
+<script src="script.js?v=2"></script></body></html>

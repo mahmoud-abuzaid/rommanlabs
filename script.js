@@ -1,365 +1,75 @@
-/**
- * ROMMAN LABS — Accessible, Fast, Bilingual Frontend Engine
- */
-
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
-  initLanguage();
-  initScrollReveals();
-  initHeroCanvas();
-  initCursorFollower();
-  initContactForm();
-  initScrollProgress();
-  initCardSpotlights();
-});
+  const root = document.documentElement;
+  const themeButton = document.getElementById('theme-toggle');
+  const langButton = document.getElementById('lang-toggle');
+  const langText = document.getElementById('lang-text');
+  const menuButton = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
 
-/* ==========================================================================
-   0. SCROLL PROGRESS BAR
-   ========================================================================== */
-function initScrollProgress() {
-  const progressBar = document.getElementById('scroll-progress');
-  if (!progressBar) return;
-
-  window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    progressBar.style.width = `${scrollPercent}%`;
-  }, { passive: true });
-}
-
-/* ==========================================================================
-   CARD SPOTLIGHT HOVER EFFECT
-   ========================================================================== */
-function initCardSpotlights() {
-  const cards = document.querySelectorAll('.card-item, .step-card, .samaam-card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
+  function applyTheme(theme) {
+    root.dataset.theme = theme;
+    localStorage.setItem('romman-theme', theme);
+    themeButton.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  function applyLanguage(lang) {
+    root.lang = lang;
+    root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    langText.textContent = lang === 'ar' ? 'EN' : 'ع';
+    document.querySelectorAll('[data-ar][data-en]').forEach((element) => {
+      const value = element.dataset[lang];
+      if (element instanceof HTMLInputElement) element.placeholder = value;
+      else element.textContent = value;
     });
+    localStorage.setItem('romman-lang', lang);
+  }
+
+  applyTheme(localStorage.getItem('romman-theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  applyLanguage(localStorage.getItem('romman-lang') || 'ar');
+  themeButton.addEventListener('click', () => applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
+  langButton.addEventListener('click', () => applyLanguage(root.lang === 'ar' ? 'en' : 'ar'));
+  menuButton.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(open));
   });
-}
+  mobileNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    menuButton.setAttribute('aria-expanded', 'false');
+  }));
 
-/* ==========================================================================
-   1. THEME MANAGEMENT (DARK / LIGHT)
-   ========================================================================== */
-function initTheme() {
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('romman-theme') || 'dark';
-
-  applyTheme(savedTheme);
-
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(nextTheme);
-      localStorage.setItem('romman-theme', nextTheme);
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      currentObserver.unobserve(entry.target);
     });
-  }
-}
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  const themeIcon = document.getElementById('theme-icon');
-  if (themeIcon) {
-    themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
-  }
-}
-
-/* ==========================================================================
-   2. BILINGUAL MANAGEMENT (ARABIC / ENGLISH)
-   ========================================================================== */
-function initLanguage() {
-  const langToggleBtn = document.getElementById('lang-toggle');
-  const savedLang = localStorage.getItem('romman-lang') || 'ar';
-
-  applyLanguage(savedLang);
-
-  if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      const currentLang = document.documentElement.getAttribute('lang') || 'ar';
-      const nextLang = currentLang === 'ar' ? 'en' : 'ar';
-      applyLanguage(nextLang);
-      localStorage.setItem('romman-lang', nextLang);
-    });
-  }
-}
-
-function applyLanguage(lang) {
-  document.documentElement.setAttribute('lang', lang);
-  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-
-  const langBtnText = document.getElementById('lang-text');
-  if (langBtnText) {
-    langBtnText.textContent = lang === 'ar' ? 'English' : 'عربي';
-  }
-
-  // Update all translatable elements
-  const elements = document.querySelectorAll('[data-ar][data-en]');
-  elements.forEach(el => {
-    const text = el.getAttribute(`data-${lang}`);
-    if (text) {
-      if (el.tagName === 'INPUT' && el.type === 'email') {
-        el.placeholder = text;
-      } else {
-        el.textContent = text;
-      }
-    }
-  });
-}
-
-/* ==========================================================================
-   3. SCROLL REVEALS
-   ========================================================================== */
-function initScrollReveals() {
-  const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  revealElements.forEach(el => observer.observe(el));
-}
-
-/* ==========================================================================
-   4. CANVAS PARTICLE BACKGROUND
-   ========================================================================== */
-function initHeroCanvas() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
-
-  const ctx = canvas.getContext('2d', { alpha: true });
-  let width = (canvas.width = window.innerWidth);
-  let height = (canvas.height = window.innerHeight);
-
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  }, { passive: true });
-
-  const particles = [];
-  const particleCount = 45;
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.7,
-      vy: (Math.random() - 0.5) * 0.7,
-      radius: 2 + Math.random() * 2.5,
-      color: Math.random() > 0.4 ? '#c41e3a' : '#e6b85c',
-      alpha: 0.2 + Math.random() * 0.6
-    });
-  }
-
-  function render() {
-    ctx.clearRect(0, 0, width, height);
-
-    // Constellation Web Connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-          const lineAlpha = (1 - dist / 120) * (currentTheme === 'dark' ? 0.16 : 0.08);
-          ctx.strokeStyle = particles[i].color;
-          ctx.globalAlpha = lineAlpha;
-          ctx.lineWidth = 0.6;
-          ctx.stroke();
-        }
-      }
-    }
-
-    // Render Particles
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0 || p.x > width) p.vx *= -1;
-      if (p.y < 0 || p.y > height) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = p.color;
-      ctx.globalAlpha = p.alpha;
-      ctx.fill();
-    });
-
-    requestAnimationFrame(render);
-  }
-
-  render();
-}
-
-/* ==========================================================================
-   5. CURSOR FOLLOWER
-   ========================================================================== */
-function initCursorFollower() {
-  const follower = document.getElementById('cursor-follower');
-  if (!follower) return;
-
-  let posX = -300, posY = -300;
-
-  window.addEventListener('mousemove', (e) => {
-    posX += (e.clientX - posX) * 0.15;
-    posY += (e.clientY - posY) * 0.15;
-    follower.style.transform = `translate3d(${e.clientX - 140}px, ${e.clientY - 140}px, 0)`;
-  }, { passive: true });
-}
-
-/* ==========================================================================
-   6. CONTACT FORM SUBMISSION (With Location Metadata & Professional UI)
-   ========================================================================== */
-async function getGeoMetadata() {
-  const meta = {
-    ip: 'غير معروف',
-    country: 'غير معروف',
-    city: 'غير معروف',
-    org: 'غير معروف',
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'غير معروف',
-    language: navigator.language || 'ar',
-    screen: `${window.screen.width}x${window.screen.height}`,
-    userAgent: navigator.userAgent
-  };
-
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 1800);
-
-    const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
-    clearTimeout(timeoutId);
-
-    if (res.ok) {
-      const data = await res.json();
-      meta.ip = data.ip || meta.ip;
-      meta.country = data.country_name || meta.country;
-      meta.city = data.city || meta.city;
-      meta.org = data.org || meta.org;
-    }
-  } catch (e) {
-    // Fallback if IP lookup fails or times out
-  }
-  return meta;
-}
-
-function initContactForm() {
   const form = document.getElementById('contact-form');
-  const emailInput = document.getElementById('contact-email');
-  const honeyInput = document.getElementById('contact-honey');
-  const submitBtn = document.getElementById('contact-submit');
+  const email = document.getElementById('contact-email');
+  const submit = document.getElementById('contact-submit');
   const feedback = document.getElementById('form-feedback');
-
-  if (!form) return;
-
-  const FORMSUBMIT_TOKEN = '63044dcb243f3a64704b00e72500939c';
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    // 1. فحص حقل المصيدة (Honeypot) للتصدي للروبوتات
-    if (honeyInput && honeyInput.value !== '') {
-      console.warn('Bot detected via honeypot.');
-      return;
-    }
-
-    const email = emailInput.value.trim();
-    if (!email) return;
-
-    const currentLang = document.documentElement.getAttribute('lang') || 'ar';
-    const btnSpan = submitBtn.querySelector('span');
-    const originalText = btnSpan ? btnSpan.textContent : submitBtn.textContent;
-
-    // حالة الإرسال
-    submitBtn.disabled = true;
-    submitBtn.style.opacity = '0.7';
-    if (btnSpan) {
-      btnSpan.textContent = currentLang === 'en' ? 'Processing...' : 'جاري معالجة الطلب...';
-    }
-
-    feedback.className = 'form-feedback-card';
-    feedback.style.display = 'none';
-
-    // 2. جلب معلومات موقع وجهاز الزائر
-    const geo = await getGeoMetadata();
-    const locationStr = geo.country !== 'غير معروف' ? `${geo.city}, ${geo.country}` : 'موقع غير معروف';
-
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const lang = root.lang || 'ar';
+    const label = submit.querySelector('span');
+    const original = label.textContent;
+    submit.disabled = true;
+    label.textContent = lang === 'ar' ? 'جارٍ الإرسال' : 'Sending';
+    feedback.textContent = '';
     try {
-      const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_TOKEN}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          _subject: `طلب تواصل جديد من [${locationStr}]`,
-          "البريد الإلكتروني": email,
-          "الموقع الجغرافي": `${geo.city} - ${geo.country}`,
-          "عنوان الـ IP": geo.ip,
-          "مزود الإنترنت (ISP)": geo.org,
-          "المنطقة الزمنية": geo.timezone,
-          "لغة المتصفح": geo.language,
-          "دقة الشاشة": geo.screen,
-          "نوع الجهاز والمتصفح": geo.userAgent,
-          "وقت الإرسال": new Date().toLocaleString(currentLang === 'en' ? 'en-US' : 'ar-SA')
-        })
+      const response = await fetch('https://formsubmit.co/ajax/63044dcb243f3a64704b00e72500939c', {
+        method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ _subject: 'طلب تواصل جديد من موقع رمان لابز', email: email.value.trim() })
       });
-
-      if (response.ok) {
-        // إخفاء نموذج الإدخال وملاحظة الخصوصية وعرض بطاقة النجاح الاحترافية
-        form.style.display = 'none';
-        const privacyNote = document.getElementById('privacy-note');
-        if (privacyNote) privacyNote.style.display = 'none';
-
-        const successTitle = currentLang === 'en'
-          ? 'Request Received Successfully!'
-          : 'تم استلام طلبك بنجاح!';
-        
-        const successDesc = currentLang === 'en'
-          ? 'Thank you for reaching out. The Romman Labs team will review your message and connect with you shortly.'
-          : 'شكراً لاقتطاعك جزءاً من وقتك للتواصل معنا. تم تسجيل بريدك بنجاح، وسيتواصل معك فريق رمان لابز في أقرب وقت.';
-
-        feedback.innerHTML = `
-          <div class="feedback-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-          </div>
-          <div class="feedback-title">${successTitle}</div>
-          <div class="feedback-desc">${successDesc}</div>
-        `;
-        feedback.className = 'form-feedback-card success';
-        form.reset();
-      } else {
-        throw new Error('Server response not ok');
-      }
-    } catch (err) {
-      feedback.textContent = currentLang === 'en'
-        ? 'Something went wrong. Please try again or contact us directly.'
-        : 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.';
-      feedback.className = 'form-feedback-card error';
-      feedback.style.display = 'block';
+      if (!response.ok) throw new Error('Request failed');
+      form.reset();
+      feedback.textContent = lang === 'ar' ? 'وصلنا طلبك. سنتواصل معك قريبًا.' : 'We received your request. We will be in touch soon.';
+    } catch {
+      feedback.textContent = lang === 'ar' ? 'تعذر الإرسال الآن. راسلنا على hello@rommanlabs.com' : 'Could not send. Email hello@rommanlabs.com';
     } finally {
-      submitBtn.disabled = false;
-      submitBtn.style.opacity = '1';
-      if (btnSpan) {
-        btnSpan.textContent = originalText;
-      }
+      submit.disabled = false;
+      label.textContent = original;
     }
   });
-}
+});
