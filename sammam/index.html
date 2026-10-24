@@ -1,0 +1,1341 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="light" data-theme-pref="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#14221c" />
+    <meta
+      name="description"
+      content="صمام — طبقة تشغيل تربط واقع الموقع بسجلات المشروع وقراراته، وتحفظ المسؤولية والأثر من الميدان إلى الإدارة."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="صمام — تشغيل المشروع من الميدان إلى القرار" />
+    <meta
+      property="og:description"
+      content="سجل تشغيلي واضح للميدان والإدارة: سياق، مسؤولية، قرار، وأثر محفوظ."
+    />
+    <title>صمام — تشغيل المشروع من الميدان إلى القرار</title>
+    <link rel="icon" href="./assets/favicon-48.png" />
+    <link
+      rel="preload"
+      href="./assets/IBMPlexSansArabic-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="./assets/NotoNaskhArabic-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-ar="انتقل إلى المحتوى" data-en="Skip to content">انتقل إلى المحتوى</a>
+
+    <div class="scroll-progress" aria-hidden="true">
+      <span class="scroll-progress-bar" id="scroll-progress-bar"></span>
+    </div>
+
+    <aside class="chapter-rail" aria-label="فصول الصفحة">
+      <a class="chapter-dot active" href="#top" data-chapter="top" aria-label="01 البداية"><span>01</span></a>
+      <a class="chapter-dot" href="#field-scene" data-chapter="field-scene" aria-label="02 الميدان"><span>02</span></a>
+      <a class="chapter-dot" href="#method" data-chapter="method" aria-label="03 النموذج التشغيلي"><span>03</span></a>
+      <a class="chapter-dot" href="#friction" data-chapter="friction" aria-label="04 الفجوة"><span>04</span></a>
+      <a class="chapter-dot" href="#work" data-chapter="work" aria-label="05 المسارات"><span>05</span></a>
+      <a class="chapter-dot" href="#governance" data-chapter="governance" aria-label="06 الحوكمة"><span>06</span></a>
+      <a class="chapter-dot" href="#faq" data-chapter="faq" aria-label="07 الأسئلة"><span>07</span></a>
+    </aside>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="صمام — الرئيسية">
+        <span class="brand-mark"><img src="./assets/logo.png" alt="" /></span>
+        <span class="brand-text">
+          <strong>صمام</strong>
+          <small>SAMMAM · FIELD TO DECISION</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <a href="#method" data-nav="method"><small>01</small><span data-ar="النموذج" data-en="Model">النموذج</span></a>
+        <a href="#friction" data-nav="friction"><small>02</small><span data-ar="الفجوة" data-en="The gap">الفجوة</span></a>
+        <a href="#work" data-nav="work"><small>03</small><span data-ar="المسارات التفاعلية" data-en="Workflows">المسارات التفاعلية</span></a>
+        <a href="#governance" data-nav="governance"><small>04</small><span data-ar="الحوكمة والصلاحيات" data-en="Governance">الحوكمة والصلاحيات</span></a>
+        <a href="#fit" data-nav="fit"><small>05</small><span data-ar="التكامل" data-en="Stack fit">التكامل</span></a>
+        <a href="#faq" data-nav="faq"><small>06</small><span data-ar="إجابات واضحة" data-en="Clear answers">إجابات واضحة</span></a>
+        <a href="../index.html" class="mobile-only-studio"><small>↖</small><span data-ar="الشركة الأم: رمان لابز" data-en="Parent Studio: Romman Labs">الشركة الأم: رمان لابز</span></a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="theme-switcher" role="group" aria-label="المظهر">
+          <button
+            type="button"
+            class="theme-btn active"
+            data-theme-value="light"
+            aria-pressed="true"
+            title="نهاري / Light"
+          >
+            <span class="theme-icon">☀</span>
+            <span data-ar="نهاري" data-en="Light">نهاري</span>
+          </button>
+          <button
+            type="button"
+            class="theme-btn"
+            data-theme-value="dark"
+            aria-pressed="false"
+            title="ليلي / Dark"
+          >
+            <span class="theme-icon">☾</span>
+            <span data-ar="ليلي" data-en="Dark">ليلي</span>
+          </button>
+          <button
+            type="button"
+            class="theme-btn"
+            data-theme-value="system"
+            aria-pressed="false"
+            title="تلقائي / System"
+          >
+            <span class="theme-icon">◐</span>
+            <span data-ar="تلقائي" data-en="Auto">تلقائي</span>
+          </button>
+        </div>
+
+        <button class="language-switch" type="button" aria-label="Switch language to English">EN</button>
+
+        <a class="header-link" href="../index.html" title="العودة إلى الشركة الأم: رمان لابز / Return to Romman Labs">
+          <span class="header-link-dot" aria-hidden="true"></span>
+          <span data-ar="رمان لابز" data-en="Romman Labs">رمان لابز</span>
+          <b aria-hidden="true">↗</b>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-label="فتح القائمة">
+          <i></i><i></i>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ==================== 01 HERO ==================== -->
+      <section class="hero" id="top">
+        <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-ambient" aria-hidden="true">
+          <span class="orbit orbit-one"></span>
+          <span class="orbit orbit-two"></span>
+          <span class="orbit orbit-three"></span>
+        </div>
+
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="eyebrow-dot"></span>
+              <span data-ar="مساحة تشغيل للمشاريع الإنشائية" data-en="Construction operations workspace">مساحة تشغيل للمشاريع الإنشائية</span>
+              <small>FIELD → RECORD → DECISION</small>
+            </div>
+
+            <h1
+              data-ar="من اللي صار<br>إلى <em>اللي لازم يصير.</em>"
+              data-en="From what happened<br>to <em>what happens next.</em>"
+            >
+              من اللي صار<br />إلى <em>اللي لازم يصير.</em>
+            </h1>
+
+            <p
+              class="hero-deck"
+              data-ar="صمام يربط أحداث الموقع بسجلات المشروع وقراراته ضمن نطاق صلاحيات محكوم. لكل متابعة مصدرٌ معلوم، ومسؤولٌ محدد، وأثرٌ يرجع له الفريق دون اختلاق أو التباس."
+              data-en="Sammam connects site events to project records and decisions within enforced access boundaries. Every follow-up has a known source, a clear owner and a verifiable trace."
+            >
+              صمام يربط أحداث الموقع بسجلات المشروع وقراراته ضمن نطاق صلاحيات محكوم. لكل متابعة مصدرٌ معلوم، ومسؤولٌ محدد، وأثرٌ يرجع له الفريق دون اختلاق أو التباس.
+            </p>
+
+            <div class="hero-ctas">
+              <a class="button-primary" href="#method">
+                <span data-ar="افهم طريقة صمام" data-en="See how Sammam works">افهم طريقة صمام</span>
+                <b aria-hidden="true">↙</b>
+              </a>
+              <button class="hero-secondary" type="button" id="hero-simulate-trigger">
+                <span class="pulse-ring" aria-hidden="true"></span>
+                <span data-ar="شغّل محاكاة المسار الحي" data-en="Run live trace simulation">شغّل محاكاة المسار الحي</span>
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <div class="hero-pillars" role="list" aria-label="ركائز صمام التشغيلية">
+              <div class="hero-pillar" role="listitem">
+                <small>01 / SOURCE</small>
+                <strong data-ar="حقيقة ميدانية مؤرخة" data-en="Dated field truth">حقيقة ميدانية مؤرخة</strong>
+              </div>
+              <div class="hero-pillar" role="listitem">
+                <small>02 / LINK</small>
+                <strong data-ar="ارتباط صريح بالأصل" data-en="Explicit source link">ارتباط صريح بالأصل</strong>
+              </div>
+              <div class="hero-pillar" role="listitem">
+                <small>03 / AUTHORITY</small>
+                <strong data-ar="توجيه لمسؤول معيّن" data-en="Assigned project owner">توجيه لمسؤول معيّن</strong>
+              </div>
+              <div class="hero-pillar" role="listitem">
+                <small>04 / TRACE</small>
+                <strong data-ar="إغلاق وأثر محفوظ" data-en="Preserved closure trace">إغلاق وأثر محفوظ</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Living Record Studio -->
+          <div class="hero-product" role="group" aria-label="مسار توضيحي لسجل تشغيلي">
+            <div class="product-frame-top">
+              <span>
+                <i class="frame-dot"></i>
+                <span data-ar="محاكي السجل التفاعلي · مسار افتراضي" data-en="INTERACTIVE RECORD STUDIO · ILLUSTRATIVE FLOW">محاكي السجل التفاعلي · مسار افتراضي</span>
+              </span>
+              <div class="frame-controls">
+                <button type="button" class="autoplay-btn" id="stage-autoplay" aria-pressed="false">
+                  <span class="autoplay-icon" id="autoplay-icon">▶</span>
+                  <span id="autoplay-label" data-ar="تشغيل تلقائي" data-en="Auto-trace">تشغيل تلقائي</span>
+                </button>
+                <span class="frame-code">TRACE / 01—04</span>
+              </div>
+            </div>
+
+            <div class="product-frame-title">
+              <div>
+                <small data-ar="من الملاحظة الميدانية إلى المعالجة المعتمدة" data-en="FROM FIELD OBSERVATION TO AUTHORIZED RESOLUTION">من الملاحظة الميدانية إلى المعالجة المعتمدة</small>
+                <strong data-ar="المشكلة تبقى مرتبطة بسياقها حتى تُعالَج صراحةً." data-en="The issue keeps its context until explicitly resolved.">المشكلة تبقى مرتبطة بسياقها حتى تُعالَج صراحةً.</strong>
+              </div>
+              <span class="frame-index" id="stage-counter">STAGE 01 / 04</span>
+            </div>
+
+            <!-- Perspective Lens Bar -->
+            <div class="lens-bar" role="tablist" aria-label="عدسة العرض">
+              <span class="lens-caption" data-ar="زاوية القراءة:" data-en="Perspective:">زاوية القراءة:</span>
+              <button type="button" class="lens-btn active" data-lens="field" aria-selected="true">
+                <span data-ar="عضو الميدان" data-en="Field Member">عضو الميدان</span>
+              </button>
+              <button type="button" class="lens-btn" data-lens="management" aria-selected="false">
+                <span data-ar="مدير المشروع" data-en="Project Manager">مدير المشروع</span>
+              </button>
+              <button type="button" class="lens-btn" data-lens="audit" aria-selected="false">
+                <span data-ar="سجل الأثر والحوكمة" data-en="Audit & Governance">سجل الأثر والحوكمة</span>
+              </button>
+            </div>
+
+            <div class="record-flow">
+              <button class="record-node active" type="button" data-stage="issue" aria-pressed="true">
+                <span class="node-symbol">!</span>
+                <span class="node-body">
+                  <small>01 / SOURCE RECORD · ISS-04</small>
+                  <b data-ar="مشكلة موقع مرصودة" data-en="Recorded site issue">مشكلة موقع مرصودة</b>
+                  <em data-ar="سياق ميداني ومرفقات مرتبطة بالسجل" data-en="Field context & evidence linked to record">سياق ميداني ومرفقات مرتبطة بالسجل</em>
+                </span>
+                <span class="node-badge" data-ar="الأصل" data-en="SOURCE">الأصل</span>
+              </button>
+
+              <div class="record-link" data-link="1">
+                <span class="link-line"><i class="link-pulse"></i></span>
+                <small data-ar="ارتباط صريح بالمصدر (source_issue_id)" data-en="EXPLICIT LINK (source_issue_id)">ارتباط صريح بالمصدر (source_issue_id)</small>
+              </div>
+
+              <button class="record-node" type="button" data-stage="rfi" aria-pressed="false">
+                <span class="node-symbol">?</span>
+                <span class="node-body">
+                  <small>02 / TECHNICAL FOLLOW-UP · RFI-12</small>
+                  <b data-ar="استفسار فني مرتبط" data-en="Linked technical RFI">استفسار فني مرتبط</b>
+                  <em data-ar="يُوجَّه إلى مسؤول معيّن داخل المشروع" data-en="Routed to assigned project owner">يُوجَّه إلى مسؤول معيّن داخل المشروع</em>
+                </span>
+                <span class="node-badge" data-ar="متابعة" data-en="ROUTED">متابعة</span>
+              </button>
+
+              <div class="record-link" data-link="2">
+                <span class="link-line"><i class="link-pulse"></i></span>
+                <small data-ar="جواب يعود إلى سجل الاستفسار" data-en="RESPONSE RETURNS TO RFI RECORD">جواب يعود إلى سجل الاستفسار</small>
+              </div>
+
+              <button class="record-node" type="button" data-stage="response" aria-pressed="false">
+                <span class="node-symbol">↳</span>
+                <span class="node-body">
+                  <small>03 / AUTHORIZED RESPONSE · RFI-12</small>
+                  <b data-ar="ردّ المسؤول المعيّن" data-en="Assigned owner response">ردّ المسؤول المعيّن</b>
+                  <em data-ar="الرد لا يغلق المشكلة الأصلية تلقائيًا" data-en="Reply never auto-closes the source issue">الرد لا يغلق المشكلة الأصلية تلقائيًا</em>
+                </span>
+                <span class="node-badge warn" data-ar="لا يغلق الأصل" data-en="ISSUE STAYS OPEN">لا يغلق الأصل</span>
+              </button>
+
+              <div class="record-link final-link" data-link="3">
+                <span class="link-line"><i class="link-pulse"></i></span>
+                <small data-ar="خطوة معالجة مستقلة بصلاحية" data-en="INDEPENDENT AUTHORIZED RESOLUTION">خطوة معالجة مستقلة بصلاحية</small>
+              </div>
+
+              <button class="record-node" type="button" data-stage="close" aria-pressed="false">
+                <span class="node-symbol">✓</span>
+                <span class="node-body">
+                  <small>04 / SOURCE LIFECYCLE · ISS-04</small>
+                  <b data-ar="تسجيل معالجة المشكلة" data-en="Record issue resolution">تسجيل معالجة المشكلة</b>
+                  <em data-ar="إغلاق صريح مع بقاء سلسلة الأثر كاملة" data-en="Explicit closure with full trace intact">إغلاق صريح مع بقاء سلسلة الأثر كاملة</em>
+                </span>
+                <span class="node-badge ok" data-ar="أثر مكتمل" data-en="RESOLVED">أثر مكتمل</span>
+              </button>
+            </div>
+
+            <!-- Live State Telemetry Bar -->
+            <div class="state-telemetry" aria-live="polite">
+              <div class="telemetry-cell">
+                <small data-ar="حالة المشكلة (ISS-04)" data-en="SOURCE ISSUE (ISS-04)">حالة المشكلة (ISS-04)</small>
+                <strong id="telemetry-issue" class="status-pill is-open">مفتوحة · OPEN</strong>
+              </div>
+              <div class="telemetry-cell">
+                <small data-ar="حالة الاستفسار (RFI-12)" data-en="LINKED RFI (RFI-12)">حالة الاستفسار (RFI-12)</small>
+                <strong id="telemetry-rfi" class="status-pill is-muted">لم يُنشأ بعد · NONE</strong>
+              </div>
+              <div class="telemetry-cell">
+                <small data-ar="نطاق الصلاحية (can_act)" data-en="AUTHORITY (can_act)">نطاق الصلاحية (can_act)</small>
+                <strong id="telemetry-auth" class="status-pill is-auth">عضو معيّن في المشروع</strong>
+              </div>
+            </div>
+
+            <!-- Contextual Insight + Role Lens Note -->
+            <div class="product-insight" aria-live="polite">
+              <span class="insight-mark">↳</span>
+              <div class="insight-stack">
+                <p id="stage-insight">
+                  ابدأ بسجل المشكلة كما ظهرت في الموقع؛ سياقها وأدلتها يتبعان مصدرها.
+                </p>
+                <small id="lens-insight" class="lens-insight-line">
+                  عدسة الميدان: يسجّل عضو الفريق الملاحظة ويرفق الدليل دون الحاجة لمغادرة سياق المشروع.
+                </small>
+              </div>
+            </div>
+
+            <div class="product-frame-bottom">
+              <span data-ar="واجهة مفاهيمية توضيحية · لا تعرض بيانات مشاريع حقيقية" data-en="Conceptual illustrative model · no live customer project data">واجهة مفاهيمية توضيحية · لا تعرض بيانات مشاريع حقيقية</span>
+              <span>SOURCE / OWNER / OUTCOME</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-rail-note" aria-hidden="true">S / OPERATING MODEL · FIELD TO DECISION</div>
+      </section>
+
+      <!-- ==================== 02 EDITORIAL FIELD INTERLUDE ==================== -->
+      <section class="site-interlude" id="field-scene" aria-label="مشهد إنشائي توضيحي">
+        <img
+          src="./assets/amman-site-sunrise.webp"
+          alt="صورة تحريرية توضيحية لموقع إنشائي في ضوء الصباح"
+          data-alt-ar="صورة تحريرية توضيحية لموقع إنشائي في ضوء الصباح"
+          data-alt-en="Illustrative editorial image of a construction site at sunrise"
+          loading="lazy"
+        />
+        <div class="interlude-wash"></div>
+        <div class="interlude-grid-overlay" aria-hidden="true"></div>
+
+        <div class="interlude-copy">
+          <span class="section-id">FIELD / THE SOURCE OF EVERY RECORD</span>
+          <h2
+            data-ar="المشروع يحدث<br>هنا أولًا."
+            data-en="The project<br>happens here first."
+          >
+            المشروع يحدث<br />هنا أولًا.
+          </h2>
+          <p
+            data-ar="والإدارة تحتاج أن ترى ما حدث، وما ترتب عليه، ومن يحمل الخطوة التالية — دون أن تضيع الحقيقة بين جولة الموقع واجتماع المكتب."
+            data-en="Management needs to see what happened, what followed and who owns the next step—without losing operational truth between site walk and office review."
+          >
+            والإدارة تحتاج أن ترى ما حدث، وما ترتب عليه، ومن يحمل الخطوة التالية — دون أن تضيع الحقيقة بين جولة الموقع واجتماع المكتب.
+          </p>
+          <small
+            data-ar="صورة تحريرية توضيحية · ليست مشروعًا فعليًا · انقر على نقاط الرصد لاستكشاف السجلات"
+            data-en="Illustrative editorial image · not a live project · select field pins to inspect record types"
+          >
+            صورة تحريرية توضيحية · ليست مشروعًا فعليًا · انقر على نقاط الرصد لاستكشاف السجلات
+          </small>
+        </div>
+
+        <!-- Interactive Field Observation Pins -->
+        <div class="interlude-hotspots" role="group" aria-label="نقاط الرصد الميداني التوضيحية">
+          <button
+            type="button"
+            class="field-hotspot active"
+            data-hotspot="diary"
+            style="--hx: 58%; --hy: 34%"
+            aria-pressed="true"
+          >
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-num">01</span>
+            <span class="hotspot-tag" data-ar="يومية موقع" data-en="Site Diary">يومية موقع</span>
+          </button>
+
+          <button
+            type="button"
+            class="field-hotspot"
+            data-hotspot="issue"
+            style="--hx: 74%; --hy: 49%"
+            aria-pressed="false"
+          >
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-num">02</span>
+            <span class="hotspot-tag" data-ar="مشكلة + دليل" data-en="Issue + Evidence">مشكلة + دليل</span>
+          </button>
+
+          <button
+            type="button"
+            class="field-hotspot"
+            data-hotspot="routing"
+            style="--hx: 86%; --hy: 68%"
+            aria-pressed="false"
+          >
+            <span class="hotspot-pulse"></span>
+            <span class="hotspot-num">03</span>
+            <span class="hotspot-tag" data-ar="توجيه لمسؤول" data-en="Assigned Action">توجيه لمسؤول</span>
+          </button>
+
+          <div class="hotspot-inspector" id="hotspot-inspector" aria-live="polite">
+            <div class="hotspot-inspector-head">
+              <span id="hotspot-code">FIELD PIN / 01</span>
+              <b id="hotspot-title">يومية موقع مؤرخة ومنسوبة</b>
+            </div>
+            <p id="hotspot-desc">
+              توثيق الوقائع اليومية في الموقع باسم الكاتب وتوقيته الفعلي، مع ربط المرفقات بصلاحية السجل.
+            </p>
+          </div>
+        </div>
+
+        <span class="interlude-index">AMMAN / FIELD OPERATIONS · EDITORIAL SCENE</span>
+      </section>
+
+      <!-- ==================== MASCOT ("صمّام") ==================== -->
+      <section class="mascot-section" id="mascot" aria-labelledby="mascot-title">
+        <div class="mascot-portrait" id="mascot-stage">
+          <div class="mascot-orbit" aria-hidden="true"></div>
+          <svg
+            class="mascot-thread-svg"
+            viewBox="0 0 440 490"
+            fill="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="goldenThreadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f3d078" stop-opacity="0.95" />
+                <stop offset="50%" stop-color="#cfe0b3" stop-opacity="0.85" />
+                <stop offset="100%" stop-color="#e5b85c" stop-opacity="0.95" />
+              </linearGradient>
+              <filter id="threadGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <path
+              id="mascot-dynamic-path"
+              d="M 88 195 C 175 140, 265 320, 362 252"
+              stroke="url(#goldenThreadGrad)"
+              stroke-width="2.5"
+              stroke-dasharray="6 6"
+              filter="url(#threadGlow)"
+            />
+            <circle cx="88" cy="195" r="6" fill="#f3d078" />
+            <rect x="355" y="245" width="13" height="13" rx="2" fill="#e5b85c" />
+          </svg>
+
+          <img
+            src="./assets/sammam-mascot-guide.webp"
+            alt="صمّام، شخصية الهوية المرحة لصمام، يلوّح بخيط يربط بين نقطتين"
+            data-alt-ar="صمّام، شخصية الهوية المرحة لصمام، يلوّح بخيط يربط بين نقطتين"
+            data-alt-en="Sammam, the friendly brand character, waving with a thread that connects two points"
+            loading="lazy"
+          />
+
+          <div class="mascot-floating-badges" aria-hidden="true">
+            <span class="m-badge m-badge-source" data-ar="● نقطة الميدان" data-en="● Field Origin">● نقطة الميدان</span>
+            <span class="m-badge m-badge-target" data-ar="■ قرار موثّق" data-en="■ Verified Decision">■ قرار موثّق</span>
+          </div>
+
+          <span class="mascot-portrait-tag">MEET SAMMAM / BRAND COMPANION · THE CONNECTED THREAD</span>
+        </div>
+
+        <div class="mascot-copy">
+          <span class="section-id">THE FRIENDLY FACE OF SAMMAM</span>
+          <span class="mascot-name" data-ar="هذا صمّام." data-en="Meet Sammam.">هذا صمّام.</span>
+          <h2
+            id="mascot-title"
+            data-ar="خيط واحد.<br><em>من الميدان للقرار.</em>"
+            data-en="One thread.<br><em>From field to decision.</em>"
+          >
+            خيط واحد.<br /><em>من الميدان للقرار.</em>
+          </h2>
+          <p
+            data-ar="صمّام رفيق هوية صمام؛ شخصية مرحة تذكّر بفكرة بسيطة وجوهرية في كل مشروع: خلِّ كل سجل مرتبطًا بمصدره، وكل متابعة بخطوتها التالية، حتى لا يضيع الأثر بين الميدان والإدارة."
+            data-en="Sammam is the friendly companion of the SAMMAM identity. A warm reminder of one essential idea: keep every record connected to its source, and every follow-up to its next step."
+          >
+            صمّام رفيق هوية صمام؛ شخصية مرحة تذكّر بفكرة بسيطة وجوهرية في كل مشروع: خلِّ كل سجل مرتبطًا بمصدره، وكل متابعة بخطوتها التالية، حتى لا يضيع الأثر بين الميدان والإدارة.
+          </p>
+
+          <div class="mascot-slogan">
+            <span class="slogan-overline">THE SAMMAM LINE</span>
+            <strong data-ar="كل خطوة إلها أثر." data-en="Every step leaves a trace.">كل خطوة إلها أثر.</strong>
+            <small data-ar="من الميدان للقرار، خيط واحد لا ينقطع." data-en="One unbroken thread from field to decision.">من الميدان للقرار، خيط واحد لا ينقطع.</small>
+          </div>
+
+          <button
+            type="button"
+            class="mascot-whisper"
+            id="mascot-whisper-btn"
+            aria-label="اضغط لقراءة تذكير آخر من صمّام"
+          >
+            <span class="whisper-avatar">
+              <img
+                src="./assets/sammam-mascot.webp"
+                alt="صمّام"
+                data-alt-ar="صمّام"
+                data-alt-en="Sammam"
+                loading="lazy"
+              />
+            </span>
+            <span class="whisper-body">
+              <small id="whisper-index">همسة صمّام 01 / 04 · انقر للتبديل</small>
+              <p id="whisper-text">ما بقرر عنك — بخلي الخيط واضح بين الملاحظة والقرار.</p>
+            </span>
+            <b aria-hidden="true">↻</b>
+          </button>
+        </div>
+      </section>
+
+      <!-- ==================== POSITION BAND ==================== -->
+      <section class="position-band" aria-label="خلاصة الرؤية">
+        <span class="position-index">S / 01 · THESIS</span>
+        <p
+          data-ar="ما ينقص المشروع غالبًا ليس تطبيقًا آخر لتكديس المهام؛ بل مسارًا تشغيليًا يحفظ الصلة الصريحة بين الواقع الميداني، والمسؤول المعيّن، والقرار المسجّل."
+          data-en="What projects often lack is not another place to pile up tasks. It’s an operational path that keeps field reality, assigned ownership and recorded decisions explicitly connected."
+        >
+          ما ينقص المشروع غالبًا ليس تطبيقًا آخر لتكديس المهام؛ بل مسارًا تشغيليًا يحفظ الصلة الصريحة بين الواقع الميداني، والمسؤول المعيّن، والقرار المسجّل.
+        </p>
+        <span class="position-mark" aria-hidden="true">↘</span>
+      </section>
+
+      <!-- ==================== 03 OPERATING MODEL ==================== -->
+      <section class="method section-wrap" id="method">
+        <div class="section-heading">
+          <div>
+            <span class="section-id">THE OPERATING MODEL / 02</span>
+            <h2
+              data-ar="صمام ما يجمع<br>السجلات فقط.<br><em>يربط ما بينها.</em>"
+              data-en="Sammam doesn’t just<br>collect records.<br><em>It connects the work.</em>"
+            >
+              صمام ما يجمع<br />السجلات فقط.<br /><em>يربط ما بينها.</em>
+            </h2>
+          </div>
+          <div class="section-summary">
+            <p
+              data-ar="كل نوع حدث له سجل يناسبه. وكل طلب له مسؤول ومسار قرار. وعندما يُسجّل الإجراء، يبقى أثره قابلًا للرجوع إليه ومراجعة مصدره."
+              data-en="Every event has a record shaped for it. Every request has an owner and a decision path. Once an action is recorded, its trace stays available to return to."
+            >
+              كل نوع حدث له سجل يناسبه. وكل طلب له مسؤول ومسار قرار. وعندما يُسجّل الإجراء، يبقى أثره قابلًا للرجوع إليه ومراجعة مصدره.
+            </p>
+            <span class="summary-rule"></span>
+            <small
+              data-ar="اختر أي مرحلة أدناه لاستعراض الضمانة التشغيلية التي يفرضها النظام."
+              data-en="Select any phase below to inspect the operational guarantee enforced by the system."
+            >
+              اختر أي مرحلة أدناه لاستعراض الضمانة التشغيلية التي يفرضها النظام.
+            </small>
+          </div>
+        </div>
+
+        <div class="operating-sequence">
+          <div class="sequence-ruler" aria-hidden="true">
+            <span class="active" data-ruler="0">01</span>
+            <span data-ruler="1">02</span>
+            <span data-ruler="2">03</span>
+            <span data-ruler="3">04</span>
+            <i id="sequence-progress-line"></i>
+          </div>
+
+          <div class="sequence-steps" role="tablist" aria-label="مراحل النموذج التشغيلي">
+            <article
+              class="sequence-step active"
+              role="tab"
+              tabindex="0"
+              aria-selected="true"
+              data-step-index="0"
+            >
+              <span class="step-label" data-ar="01 · الحقيقة" data-en="01 · FIELD TRUTH">01 · الحقيقة</span>
+              <h3 data-ar="سجّل ما حدث" data-en="Record what happened">سجّل ما حدث</h3>
+              <p
+                data-ar="يوميات الموقع والمشكلات والأدلة؛ مؤرخة ومنسوبة لصاحبها ضمن نطاق المشروع."
+                data-en="Site diaries, issues and evidence, dated and attributed to their author within the project scope."
+              >
+                يوميات الموقع والمشكلات والأدلة؛ مؤرخة ومنسوبة لصاحبها ضمن نطاق المشروع.
+              </p>
+              <small>FIELD → CANONICAL RECORD</small>
+            </article>
+
+            <article
+              class="sequence-step"
+              role="tab"
+              tabindex="-1"
+              aria-selected="false"
+              data-step-index="1"
+            >
+              <span class="step-label" data-ar="02 · السياق" data-en="02 · PROJECT CONTEXT">02 · السياق</span>
+              <h3 data-ar="أبقِ المصدر حاضرًا" data-en="Keep the source in view">أبقِ المصدر حاضرًا</h3>
+              <p
+                data-ar="اربط المتابعة بالسجل الذي بدأها بمعرّف صريح، بدل إعادة بناء القصة من رسائل متفرقة."
+                data-en="Link follow-up to the record that started it via explicit IDs, instead of reconstructing the story from scattered messages."
+              >
+                اربط المتابعة بالسجل الذي بدأها بمعرّف صريح، بدل إعادة بناء القصة من رسائل متفرقة.
+              </p>
+              <small>SOURCE → LINKED FOLLOW-UP</small>
+            </article>
+
+            <article
+              class="sequence-step"
+              role="tab"
+              tabindex="-1"
+              aria-selected="false"
+              data-step-index="2"
+            >
+              <span class="step-label" data-ar="03 · المسؤولية" data-en="03 · OWNERSHIP">03 · المسؤولية</span>
+              <h3 data-ar="وجّه الخطوة التالية" data-en="Route the next action">وجّه الخطوة التالية</h3>
+              <p
+                data-ar="تصل الطلبات والقرارات للشخص المعيّن ضمن المشروع وصلاحياته المحددة في الخادم."
+                data-en="Requests and decisions route to the assigned teammate within the project and server-verified permissions."
+              >
+                تصل الطلبات والقرارات للشخص المعيّن ضمن المشروع وصلاحياته المحددة في الخادم.
+              </p>
+              <small>FOLLOW-UP → ASSIGNED OWNER</small>
+            </article>
+
+            <article
+              class="sequence-step"
+              role="tab"
+              tabindex="-1"
+              aria-selected="false"
+              data-step-index="3"
+            >
+              <span class="step-label" data-ar="04 · الأثر" data-en="04 · TRACE">04 · الأثر</span>
+              <h3 data-ar="أغلق بسجل واضح" data-en="Close with a clear record">أغلق بسجل واضح</h3>
+              <p
+                data-ar="القرار أو الاستلام أو المعالجة تسجّل كخطوة مستقلة يمكن مراجعة مصدرها وتاريخها."
+                data-en="A decision, receipt or resolution is recorded as a distinct step whose source and history remain auditable."
+              >
+                القرار أو الاستلام أو المعالجة تسجّل كخطوة مستقلة يمكن مراجعة مصدرها وتاريخها.
+              </p>
+              <small>OWNER → AUDITED OUTCOME</small>
+            </article>
+          </div>
+
+          <!-- Interactive Sequence Guarantee Bar -->
+          <div class="sequence-inspector" id="sequence-inspector" aria-live="polite">
+            <div class="seq-inspector-meta">
+              <span class="seq-badge" id="seq-code">GUARANTEE / 01</span>
+              <strong id="seq-title">هوية الكاتب والتوقيت والدليل محفوظة عند الإنشاء</strong>
+            </div>
+            <p id="seq-detail">
+              لا يصنع صمام أحداثًا تلقائية؛ كل سجل ميداني يُحفظ بهوية العضو المعيّن في المشروع، وتُفحص صلاحية قراءة المرفقات عند كل طلب.
+            </p>
+            <div class="seq-schema" id="seq-schema">
+              <span>actor_id</span><i>→</i><span>project_scope</span><i>→</i><span>canonical_record</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 04 WHY THE GAP MATTERS (FRICTION) ==================== -->
+      <section class="friction" id="friction">
+        <div class="friction-top">
+          <span class="section-id">WHY THE GAP MATTERS / 03</span>
+          <div class="friction-filter" role="group" aria-label="نمط عرض المقارنة">
+            <button type="button" class="filter-chip active" data-friction-view="split" aria-pressed="true">
+              <span data-ar="مقارنة كاملة" data-en="Full comparison">مقارنة كاملة</span>
+            </button>
+            <button type="button" class="filter-chip" data-friction-view="before" aria-pressed="false">
+              <span data-ar="نقطة الانقطاع" data-en="Where it breaks">نقطة الانقطاع</span>
+            </button>
+            <button type="button" class="filter-chip" data-friction-view="after" aria-pressed="false">
+              <span data-ar="ما يفعله صمام" data-en="What Sammam does">ما يفعله صمام</span>
+            </button>
+          </div>
+          <span class="friction-stamp">FIELD / OFFICE / RECORD</span>
+        </div>
+
+        <div class="friction-intro">
+          <h2
+            data-ar="التعطّل يعيش<br>في <em>المسافة بينهما.</em>"
+            data-en="The friction lives<br>in <em>the distance between.</em>"
+          >
+            التعطّل يعيش<br />في <em>المسافة بينهما.</em>
+          </h2>
+          <p
+            data-ar="بين ملاحظة لم تُسجّل، وطلب لم يُسند، وقرار لا يعود إلى مصدره — هناك تضيع استمرارية العمل. صمام مصمم ليحفظ هذا الخيط دون وعود مبالغ فيها."
+            data-en="Between an unrecorded observation, an unassigned request and a decision that never returns to its source, work loses continuity. Sammam is designed to keep that thread intact."
+          >
+            بين ملاحظة لم تُسجّل، وطلب لم يُسند، وقرار لا يعود إلى مصدره — هناك تضيع استمرارية العمل. صمام مصمم ليحفظ هذا الخيط دون وعود مبالغ فيها.
+          </p>
+        </div>
+
+        <div class="friction-table" data-view="split">
+          <div class="friction-table-head">
+            <span data-ar="نقطة الانقطاع" data-en="WHERE IT BREAKS">نقطة الانقطاع</span>
+            <span data-ar="ما الذي يفعله صمام" data-en="WHAT SAMMAM DOES">ما الذي يفعله صمام</span>
+            <span>THE MECHANISM</span>
+          </div>
+
+          <article class="friction-row is-expanded" tabindex="0">
+            <span class="friction-no">01</span>
+            <div class="friction-before">
+              <small data-ar="سياق مفقود" data-en="LOST CONTEXT">سياق مفقود</small>
+              <h3
+                data-ar="التحديث موجود، لكن ما له مكان يرجع له الفريق."
+                data-en="The update exists, but the team has no record to return to."
+              >
+                التحديث موجود، لكن ما له مكان يرجع له الفريق.
+              </h3>
+            </div>
+            <div class="friction-after">
+              <p
+                data-ar="يسجل التحديث أو المشكلة كسجل مؤرخ، منسوب إلى صاحبه، مع أدلته المرتبطة به داخل المشروع."
+                data-en="Records the update or issue with its timestamp, author and attached evidence within the project."
+              >
+                يسجل التحديث أو المشكلة كسجل مؤرخ، منسوب إلى صاحبه، مع أدلته المرتبطة به داخل المشروع.
+              </p>
+              <div class="friction-trace-pill">
+                <span data-ar="الأثر: يومية/مشكلة ⟵ كاتب ⟵ توقيت ⟵ مرفق مفحوص الصلاحية" data-en="Trace: Diary/Issue ⟵ Author ⟵ Timestamp ⟵ Authorized Evidence">الأثر: يومية/مشكلة ⟵ كاتب ⟵ توقيت ⟵ مرفق مفحوص الصلاحية</span>
+              </div>
+            </div>
+            <span class="mechanism-tag" data-ar="يوميات + أدلة" data-en="DIARY + EVIDENCE">يوميات + أدلة</span>
+          </article>
+
+          <article class="friction-row" tabindex="0">
+            <span class="friction-no">02</span>
+            <div class="friction-before">
+              <small data-ar="مسؤولية ضبابية" data-en="UNCLEAR OWNERSHIP">مسؤولية ضبابية</small>
+              <h3
+                data-ar="الكل يعرف أن هناك إجراءً، لكن من يملكه؟"
+                data-en="Everyone knows action is needed, but who owns it?"
+              >
+                الكل يعرف أن هناك إجراءً، لكن من يملكه؟
+              </h3>
+            </div>
+            <div class="friction-after">
+              <p
+                data-ar="يوجه الطلب أو الاستفسار إلى الشخص المعيّن داخل المشروع، وتبقى الحالة مرتبطة بسجله وصلاحية اتخاذ القرار."
+                data-en="Routes a request or RFI to the assigned project person and keeps its status and decision authority with the record."
+              >
+                يوجه الطلب أو الاستفسار إلى الشخص المعيّن داخل المشروع، وتبقى الحالة مرتبطة بسجله وصلاحية اتخاذ القرار.
+              </p>
+              <div class="friction-trace-pill">
+                <span data-ar="الأثر: طلب/استفسار ⟵ مسؤول معيّن (assignee) ⟵ إشعار ومؤشر can_act" data-en="Trace: Request/RFI ⟵ Assigned Teammate ⟵ Notification & can_act">الأثر: طلب/استفسار ⟵ مسؤول معيّن (assignee) ⟵ إشعار ومؤشر can_act</span>
+              </div>
+            </div>
+            <span class="mechanism-tag" data-ar="طلب + مسؤول" data-en="REQUEST + OWNER">طلب + مسؤول</span>
+          </article>
+
+          <article class="friction-row" tabindex="0">
+            <span class="friction-no">03</span>
+            <div class="friction-before">
+              <small data-ar="سجلان، قصة واحدة" data-en="ONE STORY, TWO RECORDS">سجلان، قصة واحدة</small>
+              <h3
+                data-ar="الرد وصل، لكن هل عولجت المشكلة؟"
+                data-en="The reply arrived. Was the issue resolved?"
+              >
+                الرد وصل، لكن هل عولجت المشكلة؟
+              </h3>
+            </div>
+            <div class="friction-after">
+              <p
+                data-ar="يربط الاستفسار بالمشكلة الأصلية، مع بقاء حل المشكلة خطوة مستقلة لا تحدث تلقائيًا بمجرد الرد."
+                data-en="Links an RFI to the source issue, while resolution remains a separate action and never happens automatically."
+              >
+                يربط الاستفسار بالمشكلة الأصلية، مع بقاء حل المشكلة خطوة مستقلة لا تحدث تلقائيًا بمجرد الرد.
+              </p>
+              <div class="friction-trace-pill">
+                <span data-ar="الأثر: رد الاستفسار يُحفظ ⟵ المشكلة الأصلية تبقى مفتوحة حتى تُعالَج صراحةً" data-en="Trace: RFI answered ⟵ Source issue stays OPEN until explicitly resolved">الأثر: رد الاستفسار يُحفظ ⟵ المشكلة الأصلية تبقى مفتوحة حتى تُعالَج صراحةً</span>
+              </div>
+            </div>
+            <span class="mechanism-tag" data-ar="مصدر + متابعة" data-en="SOURCE + FOLLOW-UP">مصدر + متابعة</span>
+          </article>
+
+          <article class="friction-row" tabindex="0">
+            <span class="friction-no">04</span>
+            <div class="friction-before">
+              <small data-ar="كمية بلا دورة كاملة" data-en="INCOMPLETE QUANTITY STORY">كمية بلا دورة كاملة</small>
+              <h3
+                data-ar="الموافقة لا تخبرك بما وصل للموقع."
+                data-en="Approval doesn’t tell you what reached the site."
+              >
+                الموافقة لا تخبرك بما وصل للموقع.
+              </h3>
+            </div>
+            <div class="friction-after">
+              <p
+                data-ar="يفصل طلب المادة وقرارها عن الاستلام الفعلي؛ ويحتفظ بعكس الاستلام وسببه إلى جانب الأصل دون حذف."
+                data-en="Separates a material request and its decision from actual receipt; a reversal and its reason stay with the original."
+              >
+                يفصل طلب المادة وقرارها عن الاستلام الفعلي؛ ويحتفظ بعكس الاستلام وسببه إلى جانب الأصل دون حذف.
+              </p>
+              <div class="friction-trace-pill">
+                <span data-ar="الأثر: الكمية المطلوبة ≠ المستلمة ⟵ الاستلام الأصلي + سجل العكس والسبب محفوظان معًا" data-en="Trace: Requested ≠ Received ⟵ Original receipt + Reversal & reason preserved together">الأثر: الكمية المطلوبة ≠ المستلمة ⟵ الاستلام الأصلي + سجل العكس والسبب محفوظان معًا</span>
+              </div>
+            </div>
+            <span class="mechanism-tag" data-ar="قرار + استلام" data-en="DECISION + RECEIPT">قرار + استلام</span>
+          </article>
+
+          <article class="friction-row" tabindex="0">
+            <span class="friction-no">05</span>
+            <div class="friction-before">
+              <small data-ar="رقم بلا أصل" data-en="A NUMBER WITHOUT ITS SOURCE">رقم بلا أصل</small>
+              <h3
+                data-ar="الملخص مفيد حتى تسأل: أي سجلات وراءه؟"
+                data-en="A summary helps—until you ask which records support it."
+              >
+                الملخص مفيد حتى تسأل: أي سجلات وراءه؟
+              </h3>
+            </div>
+            <div class="friction-after">
+              <p
+                data-ar="يعرض التقرير التشغيلي سجلات الفترة ومصادرها الفعلية، لتعود من الملخص مباشرة إلى أصل العمل."
+                data-en="Operational reports expose period records and their actual sources, so you can return from a summary to its work."
+              >
+                يعرض التقرير التشغيلي سجلات الفترة ومصادرها الفعلية، لتعود من الملخص مباشرة إلى أصل العمل.
+              </p>
+              <div class="friction-trace-pill">
+                <span data-ar="الأثر: مجموعة التقرير ⟵ فتح السجلات المصدرية التي أنتجت العدد" data-en="Trace: Report group ⟵ Open canonical source records behind the count">الأثر: مجموعة التقرير ⟵ فتح السجلات المصدرية التي أنتجت العدد</span>
+              </div>
+            </div>
+            <span class="mechanism-tag" data-ar="تقرير ← مصدر" data-en="REPORT → SOURCE">تقرير ← مصدر</span>
+          </article>
+        </div>
+
+        <div class="friction-foot">
+          <span>↳</span>
+          <p
+            data-ar="هذه ليست وعودًا بسرعة أو نسب إنجاز؛ إنها طريقة أوضح لحفظ العمل الذي يحدث فعلًا والرجوع إلى أصوله."
+            data-en="No promises of speed or completion rates here. Just a clearer way to keep a record of work that actually happened."
+          >
+            هذه ليست وعودًا بسرعة أو نسب إنجاز؛ إنها طريقة أوضح لحفظ العمل الذي يحدث فعلًا والرجوع إلى أصوله.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================== 05 WORKFLOW CAPABILITIES & LIVE LAB ==================== -->
+      <section class="work section-wrap" id="work">
+        <div class="work-head">
+          <div>
+            <span class="section-id">PRODUCT CAPABILITIES & LIVE LAB / 04</span>
+            <h2
+              data-ar="منظومة واحدة.<br><em>مسارات متخصصة.</em>"
+              data-en="One workspace.<br><em>Purpose-built workflows.</em>"
+            >
+              منظومة واحدة.<br /><em>مسارات متخصصة.</em>
+            </h2>
+          </div>
+          <p
+            data-ar="كل سجل يتبع نوع العمل وقواعده؛ فلا يتحول طلب صغير إلى اعتماد فني، ولا تصبح المشكلة مجرد رسالة في موجز. جرّب المحاكي التفاعلي داخل كل مسار."
+            data-en="Each record follows the type of work and its rules: a field request doesn’t turn into a technical approval, and an issue doesn’t become just another feed message. Try the interactive lab inside each workflow."
+          >
+            كل سجل يتبع نوع العمل وقواعده؛ فلا يتحول طلب صغير إلى اعتماد فني، ولا تصبح المشكلة مجرد رسالة في موجز. جرّب المحاكي التفاعلي داخل كل مسار.
+          </p>
+        </div>
+
+        <div class="workflow-system">
+          <div class="workflow-tabs" role="tablist" aria-label="قدرات صمام">
+            <button
+              class="workflow-tab active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="workflow-panel"
+              data-workflow="field"
+            >
+              <span>01</span>
+              <b data-ar="سجلات الميدان والأدلة" data-en="Field records & evidence">سجلات الميدان والأدلة</b>
+              <i>↗</i>
+            </button>
+            <button
+              class="workflow-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="workflow-panel"
+              data-workflow="decisions"
+              tabindex="-1"
+            >
+              <span>02</span>
+              <b data-ar="القرارات والمتابعة" data-en="Decisions & follow-up">القرارات والمتابعة</b>
+              <i>↗</i>
+            </button>
+            <button
+              class="workflow-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="workflow-panel"
+              data-workflow="materials"
+              tabindex="-1"
+            >
+              <span>03</span>
+              <b data-ar="المواد والاستلام والعكس" data-en="Materials, receipts & reversal">المواد والاستلام والعكس</b>
+              <i>↗</i>
+            </button>
+            <button
+              class="workflow-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="workflow-panel"
+              data-workflow="change"
+              tabindex="-1"
+            >
+              <span>04</span>
+              <b data-ar="التعليمات وإشعارات التغيير" data-en="Instructions & change notices">التعليمات وإشعارات التغيير</b>
+              <i>↗</i>
+            </button>
+            <button
+              class="workflow-tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="workflow-panel"
+              data-workflow="visibility"
+              tabindex="-1"
+            >
+              <span>05</span>
+              <b data-ar="النشاط والتقارير المصدرية" data-en="Activity & source reports">النشاط والتقارير المصدرية</b>
+              <i>↗</i>
+            </button>
+          </div>
+
+          <article class="workflow-detail" id="workflow-panel" role="tabpanel" aria-live="polite" tabindex="0">
+            <div class="detail-heading">
+              <span class="detail-overline" id="workflow-label">FIELD RECORDS / 01</span>
+              <span class="detail-glyph" id="workflow-glyph">≋</span>
+            </div>
+
+            <h3 id="workflow-title" data-ar="الحقيقة تبدأ من الميدان." data-en="Operational truth starts in the field.">
+              الحقيقة تبدأ من الميدان.
+            </h3>
+
+            <p
+              id="workflow-copy"
+              data-ar="سجّل يوميات الموقع ومشكلاته ضمن المشروع، مع الموقع أو السياق المتاح والمرفقات المرتبطة بالسجل. ما يُحفظ هو ما أُدخل فعلًا؛ لا يصنع صمام نشاطًا أو بيانات بديلة."
+              data-en="Record site diaries and issues within the project, with available location or context and evidence attached to the record. What is saved is what was actually entered; Sammam does not invent activity or fill in missing data."
+            >
+              سجّل يوميات الموقع ومشكلاته ضمن المشروع، مع الموقع أو السياق المتاح والمرفقات المرتبطة بالسجل. ما يُحفظ هو ما أُدخل فعلًا؛ لا يصنع صمام نشاطًا أو بيانات بديلة.
+            </p>
+
+            <!-- Interactive Workflow Blueprint Sandbox -->
+            <div class="workflow-sandbox" id="workflow-sandbox">
+              <!-- Populated dynamically by script.js per workflow -->
+            </div>
+
+            <div class="detail-specs">
+              <span>
+                <small data-ar="السجل القانوني" data-en="CANONICAL RECORD">السجل القانوني</small>
+                <b id="workflow-record" data-ar="يومية موقع · مشكلة موقع" data-en="Site diary · Site issue">يومية موقع · مشكلة موقع</b>
+              </span>
+              <span>
+                <small data-ar="ما يبقى واضحًا ومحفوظًا" data-en="WHAT STAYS CLEAR">ما يبقى واضحًا ومحفوظًا</small>
+                <b id="workflow-proof" data-ar="الوقت · الكاتب · الدليل" data-en="Time · Author · Evidence">الوقت · الكاتب · الدليل</b>
+              </span>
+            </div>
+
+            <div class="detail-coda">
+              <span>↳</span>
+              <span
+                id="workflow-coda"
+                data-ar="تحديث موقعك يصبح سجلًا يمكن العثور عليه والرجوع إلى سياقه."
+                data-en="A site update becomes a record the team can find and return to in context."
+              >
+                تحديث موقعك يصبح سجلًا يمكن العثور عليه والرجوع إلى سياقه.
+              </span>
+            </div>
+          </article>
+        </div>
+
+        <div class="work-note">
+          <span class="work-note-id">S / 04.1</span>
+          <p
+            data-ar="الإجراءات مرتبطة بالنوع والصلاحية ودورة الحياة؛ ما تقدر عليه الشاشة يقرره الخادم حسب وصول الشخص وسياق المشروع مع حماية العمليات الحساسة بمفاتيح عدم التكرار (Idempotency-Key)."
+            data-en="Actions follow record type, access and lifecycle. The server determines what a person can do for their access and project context, protecting key mutations with durable idempotency."
+          >
+            الإجراءات مرتبطة بالنوع والصلاحية ودورة الحياة؛ ما تقدر عليه الشاشة يقرره الخادم حسب وصول الشخص وسياق المشروع مع حماية العمليات الحساسة بمفاتيح عدم التكرار (Idempotency-Key).
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================== 06 GOVERNANCE & INTERACTIVE AUTHORITY MATRIX ==================== -->
+      <section class="governance" id="governance">
+        <div class="governance-top">
+          <span class="section-id">CONTROL IS PART OF THE PRODUCT / 05</span>
+          <span class="governance-code">ACCESS / FORCED RLS / HISTORY / EVIDENCE</span>
+        </div>
+
+        <div class="governance-grid">
+          <div class="governance-title">
+            <h2
+              data-ar="الثقة<br>ليست وعدًا.<br><em>إنها تصميم.</em>"
+              data-en="Trust<br>isn’t a promise.<br><em>It’s designed in.</em>"
+            >
+              الثقة<br />ليست وعدًا.<br /><em>إنها تصميم.</em>
+            </h2>
+            <p
+              data-ar="في مشاريع حقيقية، طريقة الوصول وحفظ الأثر وعزل البيانات في قاعدة البيانات (PostgreSQL Forced RLS) جزء أصيل من طريقة إنجاز العمل."
+              data-en="In real projects, access boundaries, record history and database-enforced tenant isolation (PostgreSQL Forced RLS) are part of how work gets done."
+            >
+              في مشاريع حقيقية، طريقة الوصول وحفظ الأثر وعزل البيانات في قاعدة البيانات (PostgreSQL Forced RLS) جزء أصيل من طريقة إنجاز العمل.
+            </p>
+          </div>
+
+          <div class="governance-principles">
+            <article>
+              <span>01</span>
+              <div>
+                <h3 data-ar="الشركة ليست المشروع" data-en="Company isn’t project access">الشركة ليست المشروع</h3>
+                <p
+                  data-ar="عضوية الشركة — حتى بصلاحية مالك أو مدير شركة — لا تمنح تلقائيًا وصولًا تشغيليًا للمشاريع. يحتاج كل مشروع إلى تعيين نشط وصلاحية مناسبة."
+                  data-en="Company membership—even as Owner or Admin—does not automatically grant operational project access. Each project requires an active assignment."
+                >
+                  عضوية الشركة — حتى بصلاحية مالك أو مدير شركة — لا تمنح تلقائيًا وصولًا تشغيليًا للمشاريع. يحتاج كل مشروع إلى تعيين نشط وصلاحية مناسبة.
+                </p>
+              </div>
+              <small>COMPANY ≠ PROJECT</small>
+            </article>
+
+            <article>
+              <span>02</span>
+              <div>
+                <h3 data-ar="الدليل يتبع صلاحية السجل" data-en="Evidence follows record access">الدليل يتبع صلاحية السجل</h3>
+                <p
+                  data-ar="مرفقات المشروع تُحفظ خارج الجذر العام وتُقرأ فقط من خلال التحقق الآني من صلاحية الوصول إلى المشروع والسجل المرتبط، دون تخزين دائم في المتصفح."
+                  data-en="Project evidence lives outside the public root and is read only through live authorization against the project and linked record, never persisted in browser cache."
+                >
+                  مرفقات المشروع تُحفظ خارج الجذر العام وتُقرأ فقط من خلال التحقق الآني من صلاحية الوصول إلى المشروع والسجل المرتبط، دون تخزين دائم في المتصفح.
+                </p>
+              </div>
+              <small>REAUTHORIZE ON READ</small>
+            </article>
+
+            <article>
+              <span>03</span>
+              <div>
+                <h3 data-ar="الأصل والعكس يبقيان معًا" data-en="Original and reversal stay together">الأصل والعكس يبقيان معًا</h3>
+                <p
+                  data-ar="الاستلام لا يُحذف أو يُعدّل؛ يُسجل العكس المصرح به وسببه وهوية منفذه مع بقاء الأثر الأصلي وتحديث الكمية الفعالة."
+                  data-en="A receipt is never deleted or edited; an authorized reversal, its actor and its reason stay alongside the original trace."
+                >
+                  الاستلام لا يُحذف أو يُعدّل؛ يُسجل العكس المصرح به وسببه وهوية منفذه مع بقاء الأثر الأصلي وتحديث الكمية الفعالة.
+                </p>
+              </div>
+              <small>HISTORY / ACTOR / REASON</small>
+            </article>
+
+            <article>
+              <span>04</span>
+              <div>
+                <h3 data-ar="لا نجاح قبل تأكيده" data-en="No success before confirmation">لا نجاح قبل تأكيده</h3>
+                <p
+                  data-ar="الحفظ الفاشل لا يتحول إلى سجل ناجح، وتعذّر رفع الدليل يبقى منفصلًا عن حفظ السجل، والعمليات غير المؤكدة لا تُعاد تلقائيًا إلا بعقد عدم تكرار صريح."
+                  data-en="A failed save never appears successful, failed evidence upload stays distinct from a saved record, and uncertain writes never replay without an idempotency contract."
+                >
+                  الحفظ الفاشل لا يتحول إلى سجل ناجح، وتعذّر رفع الدليل يبقى منفصلًا عن حفظ السجل، والعمليات غير المؤكدة لا تُعاد تلقائيًا إلا بعقد عدم تكرار صريح.
+                </p>
+              </div>
+              <small>EXPLICIT OUTCOMES</small>
+            </article>
+          </div>
+        </div>
+
+        <!-- Interactive Authority & Scope Matrix Simulator -->
+        <div class="authority-lab" aria-labelledby="auth-lab-title">
+          <div class="authority-lab-head">
+            <div>
+              <span class="section-id">INTERACTIVE SCOPE VERIFIER · SERVER & RLS SIMULATOR</span>
+              <h3
+                id="auth-lab-title"
+                data-ar="مختبر حدود الصلاحية والنطاق"
+                data-en="Interactive Authority & Scope Matrix"
+              >
+                مختبر حدود الصلاحية والنطاق
+              </h3>
+            </div>
+            <p
+              data-ar="اختبر كيف يقرر الخادم وقاعدة البيانات (PostgreSQL RLS) كل عملية قراءة أو كتابة بناءً على هوية الفاعل وتعيينه الفعلي في المشروع."
+              data-en="Test how the server and PostgreSQL RLS authorize every read or write based on actor identity and active project assignment."
+            >
+              اختبر كيف يقرر الخادم وقاعدة البيانات (PostgreSQL RLS) كل عملية قراءة أو كتابة بناءً على هوية الفاعل وتعيينه الفعلي في المشروع.
+            </p>
+          </div>
+
+          <div class="authority-lab-controls">
+            <div class="auth-control-group">
+              <span class="auth-group-label" data-ar="1. اختر هوية الفاعل:" data-en="1. Select Actor Identity:">1. اختر هوية الفاعل:</span>
+              <div class="auth-pills" role="radiogroup" aria-label="هوية الفاعل">
+                <button type="button" class="auth-pill active" data-actor="owner_unassigned" aria-checked="true">
+                  <span data-ar="مالك شركة (غير معيّن في المشروع)" data-en="Company Owner (Unassigned to Project)">مالك شركة (غير معيّن في المشروع)</span>
+                </button>
+                <button type="button" class="auth-pill" data-actor="project_manager" aria-checked="false">
+                  <span data-ar="مدير المشروع المعيّن" data-en="Assigned Project Manager">مدير المشروع المعيّن</span>
+                </button>
+                <button type="button" class="auth-pill" data-actor="field_member" aria-checked="false">
+                  <span data-ar="عضو ميداني معيّن" data-en="Assigned Field Member">عضو ميداني معيّن</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-control-group">
+              <span class="auth-group-label" data-ar="2. اختر الإجراء المطلوب:" data-en="2. Select Attempted Action:">2. اختر الإجراء المطلوب:</span>
+              <div class="auth-pills" role="radiogroup" aria-label="الإجراء المطلوب">
+                <button type="button" class="auth-pill active" data-action="read_evidence" aria-checked="true">
+                  <span data-ar="قراءة سجلات وأدلة المشروع" data-en="Read Project Records & Evidence">قراءة سجلات وأدلة المشروع</span>
+                </button>
+                <button type="button" class="auth-pill" data-action="manager_decision" aria-checked="false">
+                  <span data-ar="البتّ في طلب مسند لمدير المشروع" data-en="Decide Manager-Assigned Request">البتّ في طلب مسند لمدير المشروع</span>
+                </button>
+                <button type="button" class="auth-pill" data-action="company_admin" aria-checked="false">
+                  <span data-ar="إدارة عضوية الشركة وإنشاء مشروع" data-en="Manage Company & Create Project">إدارة عضوية الشركة وإنشاء مشروع</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="authority-verdict" id="authority-verdict" aria-live="polite">
+            <div class="verdict-status">
+              <span class="verdict-badge is-denied" id="verdict-badge">مرفوض · SCOPE DENIED</span>
+              <code class="verdict-rule" id="verdict-rule">RULE: COMPANY_ADMIN ≠ PROJECT_ASSIGNMENT</code>
+            </div>
+            <p class="verdict-explanation" id="verdict-explanation">
+              عضوية أو ملكية الشركة تمنح صلاحيات إدارة الشركة فقط، لكنها لا تفتح سجلات المشروع أو مرفقاته ما لم يكن المستخدم معيّنًا بشكل نشط في فريق المشروع.
+            </p>
+          </div>
+        </div>
+
+        <div class="governance-footer">
+          <span>BOUNDARIES ARE FEATURES</span>
+          <p
+            data-ar="المعلومات الخاصة لا تُخزّن للعمل دون اتصال، والكتابات المؤجلة لا تُرسل تلقائيًا."
+            data-en="Private project data isn’t stored for offline work, and deferred writes aren’t sent automatically."
+          >
+            المعلومات الخاصة لا تُخزّن للعمل دون اتصال، والكتابات المؤجلة لا تُرسل تلقائيًا.
+          </p>
+          <span>ONLINE-FIRST / PROJECT-SCOPED RLS</span>
+        </div>
+      </section>
+
+      <!-- ==================== 07 BUILT TO FIT THE OPERATING STACK ==================== -->
+      <section class="fit section-wrap" id="fit">
+        <div class="fit-label">
+          <span class="section-id">BUILT TO FIT THE OPERATING STACK / 06</span>
+          <span class="fit-index">S / 06</span>
+        </div>
+
+        <div class="fit-content">
+          <h2
+            data-ar="مساحة تشغيل.<br>لا تدّعي أنها <em>كل النظام.</em>"
+            data-en="An operating workspace.<br>Not a claim to be <em>the whole system.</em>"
+          >
+            مساحة تشغيل.<br />لا تدّعي أنها <em>كل النظام.</em>
+          </h2>
+          <p
+            data-ar="صمام يربط سجلات الميدان بقرارات إدارة المشروع، ويكمل الأنظمة التي تعتمدها الشركة. ليس نظام محاسبة، ولا بديلًا عن ERP أو إدارة المشاريع أو الجدولة الزمنية أو BIM."
+            data-en="Sammam connects field records to project-management decisions and complements the systems a company already relies on. It is not accounting, an ERP replacement, project scheduling or BIM authoring."
+          >
+            صمام يربط سجلات الميدان بقرارات إدارة المشروع، ويكمل الأنظمة التي تعتمدها الشركة. ليس نظام محاسبة، ولا بديلًا عن ERP أو إدارة المشاريع أو الجدولة الزمنية أو BIM.
+          </p>
+
+          <!-- Interactive 3-Zone Architecture Fit Map -->
+          <div class="fit-architecture" role="group" aria-label="خريطة موقع صمام ضمن منظومة الشركة">
+            <button type="button" class="fit-zone" data-zone="field" aria-pressed="false">
+              <small>ZONE 01 · REALITY</small>
+              <strong data-ar="الواقع الميداني" data-en="Field Reality">الواقع الميداني</strong>
+              <span data-ar="مشاهدات · يوميات · مشكلات · دفعات توريد" data-en="Observations · Diaries · Issues · Deliveries">مشاهدات · يوميات · مشكلات · دفعات توريد</span>
+            </button>
+
+            <span class="fit-arrow" aria-hidden="true">→</span>
+
+            <button type="button" class="fit-zone is-center active" data-zone="sammam" aria-pressed="true">
+              <small>ZONE 02 · OPERATING LAYER</small>
+              <strong data-ar="صمام · SAMMAM" data-en="SAMMAM Workspace">صمام · SAMMAM</strong>
+              <span data-ar="تشغيل · توجيه المسؤولية · قرار · أثر محفوظ" data-en="Operations · Ownership routing · Decision · Trace">تشغيل · توجيه المسؤولية · قرار · أثر محفوظ</span>
+            </button>
+
+            <span class="fit-arrow" aria-hidden="true">→</span>
+
+            <button type="button" class="fit-zone" data-zone="enterprise" aria-pressed="false">
+              <small>ZONE 03 · SYSTEMS OF RECORD</small>
+              <strong data-ar="أنظمة الشركة المعتمدة" data-en="Company Systems">أنظمة الشركة المعتمدة</strong>
+              <span data-ar="ERP · المحاسبة المالية · العقود · الجدولة · BIM" data-en="ERP · Financial Ledger · Contracts · Scheduling · BIM">ERP · المحاسبة المالية · العقود · الجدولة · BIM</span>
+            </button>
+          </div>
+
+          <div class="fit-zone-detail" id="fit-zone-detail" aria-live="polite">
+            <span class="fit-detail-tag" id="fit-detail-tag">SAMMAM SCOPE</span>
+            <p id="fit-detail-text">
+              يمسك صمام الخيط التشغيلي اليومي: تحويل واقعة الموقع إلى سجل منسوب، ربطه بالاستفسار أو الطلب، توجيهه للمسؤول المعيّن، وحفظ القرار والاستلام الفعلي وعكسه.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 08 FAQ ==================== -->
+      <section class="faq section-wrap" id="faq">
+        <div class="faq-heading">
+          <span class="section-id">CLEAR ANSWERS / 07</span>
+          <h2
+            data-ar="أسئلة مباشرة.<br><em>إجابات بحدودها.</em>"
+            data-en="Direct questions.<br><em>Bounded answers.</em>"
+          >
+            أسئلة مباشرة.<br /><em>إجابات بحدودها.</em>
+          </h2>
+          <p
+            data-ar="لأن الثقة تبدأ من وصف دقيق وصريح لما يفعله المنتج وما لا يدّعيه."
+            data-en="Because trust starts with an accurate, candid account of what the product does and where its boundaries lie."
+          >
+            لأن الثقة تبدأ من وصف دقيق وصريح لما يفعله المنتج وما لا يدّعيه.
+          </p>
+          <button type="button" class="faq-toggle-all" id="faq-toggle-all">
+            <span data-ar="فتح جميع الإجابات" data-en="Expand all answers">فتح جميع الإجابات</span>
+          </button>
+        </div>
+
+        <div class="faq-list">
+          <details open>
+            <summary>
+              <span data-ar="هل صمام بديل عن ERP أو نظام إدارة مشاريع؟" data-en="Does Sammam replace an ERP or PMIS?">هل صمام بديل عن ERP أو نظام إدارة مشاريع؟</span>
+              <b>＋</b>
+            </summary>
+            <p
+              data-ar="لا. صمام يركز على تشغيل المسار من الميدان إلى القرار والإغلاق، ويكمل أنظمة السجل التي تعتمدها الشركة بدل استبدالها."
+              data-en="No. Sammam focuses on the operational path from field to decision and closure, complementing the systems of record a company relies on."
+            >
+              لا. صمام يركز على تشغيل المسار من الميدان إلى القرار والإغلاق، ويكمل أنظمة السجل التي تعتمدها الشركة بدل استبدالها.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              <span data-ar="من يقدر يشوف سجلات المشروع وأدلته؟" data-en="Who can access a project’s records and evidence?">من يقدر يشوف سجلات المشروع وأدلته؟</span>
+              <b>＋</b>
+            </summary>
+            <p
+              data-ar="الشخص الذي لديه تعيين نشط وصلاحية مناسبة في ذلك المشروع تحديدًا. عضوية الشركة وحدها — حتى بصلاحية مالك أو مدير شركة — لا تمنح وصولًا لسجلات المشروع أو أدلته."
+              data-en="People with an active assignment and suitable authority in that specific project. Company membership alone—even as Owner or Admin—does not grant access to project records or evidence."
+            >
+              الشخص الذي لديه تعيين نشط وصلاحية مناسبة في ذلك المشروع تحديدًا. عضوية الشركة وحدها — حتى بصلاحية مالك أو مدير شركة — لا تمنح وصولًا لسجلات المشروع أو أدلته.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              <span data-ar="هل يعمل دون اتصال بالإنترنت؟" data-en="Does it work offline?">هل يعمل دون اتصال بالإنترنت؟</span>
+              <b>＋</b>
+            </summary>
+            <p
+              data-ar="صمام تطبيق ويب تقدمي متصل بالإنترنت أولًا (Online-first PWA). يحفظ قشرة التطبيق الثابتة فقط، ولا يخزن بيانات المشروع الخاصة أو المرفقات للعمل دون اتصال، ولا يرسل الكتابات المؤجلة تلقائيًا."
+              data-en="Sammam is an online-first PWA. It precaches only the static application shell; it does not store private project data or evidence for offline access, nor does it queue offline writes."
+            >
+              صمام تطبيق ويب تقدمي متصل بالإنترنت أولًا (Online-first PWA). يحفظ قشرة التطبيق الثابتة فقط، ولا يخزن بيانات المشروع الخاصة أو المرفقات للعمل دون اتصال، ولا يرسل الكتابات المؤجلة تلقائيًا.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              <span data-ar="هل التقرير التشغيلي تقرير محاسبي؟" data-en="Are operational reports accounting reports?">هل التقرير التشغيلي تقرير محاسبي؟</span>
+              <b>＋</b>
+            </summary>
+            <p
+              data-ar="لا. تقارير صمام تلخص سجلات التشغيل ومصادرها الفعلية القابلة للمراجعة. قيم المواد والتكلفة تقديرات تشغيلية معروفة عند تفعيل عملة المشروع، وليست دفترًا محاسبيًا أو فاتورة أو مدفوعات أو إقفالًا ماليًا."
+              data-en="No. Sammam reports summarize operational records and their inspectable sources. Known material and cost values are operational estimates when project currency is configured—not a ledger, invoice, payment or financial close."
+            >
+              لا. تقارير صمام تلخص سجلات التشغيل ومصادرها الفعلية القابلة للمراجعة. قيم المواد والتكلفة تقديرات تشغيلية معروفة عند تفعيل عملة المشروع، وليست دفترًا محاسبيًا أو فاتورة أو مدفوعات أو إقفالًا ماليًا.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              <span data-ar="هل الرد على الاستفسار يحل المشكلة الأصلية تلقائيًا؟" data-en="Does an RFI response automatically resolve its source issue?">هل الرد على الاستفسار يحل المشكلة الأصلية تلقائيًا؟</span>
+              <b>＋</b>
+            </summary>
+            <p
+              data-ar="لا. الربط بينهما يوضح العلاقة ويتيح العودة الفورية إلى المصدر. أما معالجة المشكلة الأصلية فتبقى خطوة مستقلة يسجلها صاحب الصلاحية بعد التحقق."
+              data-en="No. The link makes their relationship explicit and returns to the source. Issue resolution remains a separate step recorded by an authorized person."
+            >
+              لا. الربط بينهما يوضح العلاقة ويتيح العودة الفورية إلى المصدر. أما معالجة المشكلة الأصلية فتبقى خطوة مستقلة يسجلها صاحب الصلاحية بعد التحقق.
+            </p>
+          </details>
+
+          <details>
+            <summary>
+              <span data-ar="كيف يتعامل صمام مع مسودات المشاريع وتفعيلها؟" data-en="How do project drafts and activation work?">كيف يتعامل صمام مع مسودات المشاريع وتفعيلها؟</span>
+              <b>＋</b>
+            </summary>
+            <p
+              data-ar="تُنشأ المشاريع أولًا كمسودة (Draft) لإعداد الفريق والإعدادات، ولا تبدأ القراءات والعمليات التشغيلية إلا بعد تفعيل المشروع رسميًا على الخادم."
+              data-en="Projects start as a draft for setup and team assignment; operational reads and workflows begin only after explicit server-verified activation."
+            >
+              تُنشأ المشاريع أولًا كمسودة (Draft) لإعداد الفريق والإعدادات، ولا تبدأ القراءات والعمليات التشغيلية إلا بعد تفعيل المشروع رسميًا على الخادم.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- ==================== CLOSING ==================== -->
+      <section class="closing">
+        <div class="closing-orbit" aria-hidden="true"></div>
+        <div class="closing-content">
+          <span class="section-id">SAMMAM / FIELD-TO-MANAGEMENT OPERATIONS</span>
+          <h2
+            data-ar="خلّ كل خطوة<br>ترجع إلى <em>قصتها.</em>"
+            data-en="Let every next step<br>lead back to <em>its story.</em>"
+          >
+            خلّ كل خطوة<br />ترجع إلى <em>قصتها.</em>
+          </h2>
+          <p
+            data-ar="استكشف كيف يحفظ صمام صلة العمل بمصدره، من أول ملاحظة في الموقع إلى آخر إجراء موثّق."
+            data-en="Explore how Sammam keeps work connected to its source, from the first site observation to the final recorded action."
+          >
+            استكشف كيف يحفظ صمام صلة العمل بمصدره، من أول ملاحظة في الموقع إلى آخر إجراء موثّق.
+          </p>
+          <div class="closing-actions">
+            <a class="button-light" href="#top">
+              <span data-ar="ارجع إلى محاكي المسار" data-en="Return to record studio">ارجع إلى محاكي المسار</span>
+              <b>↗</b>
+            </a>
+            <a class="closing-secondary" href="#work">
+              <span data-ar="تصفّح المسارات الخمسة" data-en="Browse all 5 workflows">تصفّح المسارات الخمسة</span>
+            </a>
+          </div>
+        </div>
+        <div class="closing-code">SOURCE / OWNER / OUTCOME · SAMMAM</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand" href="#top">
+        <span class="brand-mark"><img src="./assets/logo.png" alt="" /></span>
+        <span class="brand-text">
+          <strong>صمام</strong>
+          <small>SAMMAM</small>
+        </span>
+      </a>
+      <p
+        data-ar="الحقيقة التشغيلية، مرتبطة بمصدرها — من الميدان إلى القرار."
+        data-en="Operational truth, connected to its source — from field to decision."
+      >
+        الحقيقة التشغيلية، مرتبطة بمصدرها — من الميدان إلى القرار.
+      </p>
+      <div class="footer-links">
+        <span>© 2026 SAMMAM</span>
+        <a href="../index.html" data-ar="من رمان لابز ↗" data-en="By Romman Labs ↗">من رمان لابز ↗</a>
+        <a href="#work" data-ar="المسارات" data-en="Workflows">المسارات</a>
+        <a href="#governance" data-ar="حدود الوصول" data-en="Access boundaries">حدود الوصول</a>
+        <a href="#faq" data-ar="إجابات واضحة" data-en="Clear answers">إجابات واضحة</a>
+        <a href="#top" data-ar="إلى الأعلى ↑" data-en="Back to top ↑">إلى الأعلى ↑</a>
+      </div>
+    </footer>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "SAMMAM",
+        "alternateName": "صمام",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "description": "Construction operations workspace connecting field records to project decisions and traceable follow-through."
+      }
+    </script>
+  </body>
+</html>
