@@ -40,16 +40,6 @@
       <span class="scroll-progress-bar" id="scroll-progress-bar"></span>
     </div>
 
-    <aside class="chapter-rail" aria-label="فصول الصفحة">
-      <a class="chapter-dot active" href="#top" data-chapter="top" aria-label="01 البداية"><span>01</span></a>
-      <a class="chapter-dot" href="#field-scene" data-chapter="field-scene" aria-label="02 الميدان"><span>02</span></a>
-      <a class="chapter-dot" href="#method" data-chapter="method" aria-label="03 النموذج التشغيلي"><span>03</span></a>
-      <a class="chapter-dot" href="#friction" data-chapter="friction" aria-label="04 الفجوة"><span>04</span></a>
-      <a class="chapter-dot" href="#work" data-chapter="work" aria-label="05 المسارات"><span>05</span></a>
-      <a class="chapter-dot" href="#governance" data-chapter="governance" aria-label="06 الحوكمة"><span>06</span></a>
-      <a class="chapter-dot" href="#faq" data-chapter="faq" aria-label="07 الأسئلة"><span>07</span></a>
-    </aside>
-
     <header class="site-header">
       <a class="brand" href="#top" aria-label="صمام — الرئيسية">
         <span class="brand-mark"><img src="./assets/logo.png" alt="" /></span>
@@ -400,102 +390,6 @@
         </div>
 
         <span class="interlude-index">AMMAN / FIELD OPERATIONS · EDITORIAL SCENE</span>
-      </section>
-
-      <!-- ==================== MASCOT ("صمّام") ==================== -->
-      <section class="mascot-section" id="mascot" aria-labelledby="mascot-title">
-        <div class="mascot-portrait" id="mascot-stage">
-          <div class="mascot-orbit" aria-hidden="true"></div>
-          <svg
-            class="mascot-thread-svg"
-            viewBox="0 0 440 490"
-            fill="none"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="goldenThreadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#f3d078" stop-opacity="0.95" />
-                <stop offset="50%" stop-color="#cfe0b3" stop-opacity="0.85" />
-                <stop offset="100%" stop-color="#e5b85c" stop-opacity="0.95" />
-              </linearGradient>
-              <filter id="threadGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="4" result="blur" />
-                <feComposite in="SourceGraphic" in2="blur" operator="over" />
-              </filter>
-            </defs>
-            <path
-              id="mascot-dynamic-path"
-              d="M 88 195 C 175 140, 265 320, 362 252"
-              stroke="url(#goldenThreadGrad)"
-              stroke-width="2.5"
-              stroke-dasharray="6 6"
-              filter="url(#threadGlow)"
-            />
-            <circle cx="88" cy="195" r="6" fill="#f3d078" />
-            <rect x="355" y="245" width="13" height="13" rx="2" fill="#e5b85c" />
-          </svg>
-
-          <img
-            src="./assets/sammam-mascot-guide.webp"
-            alt="صمّام، شخصية الهوية المرحة لصمام، يلوّح بخيط يربط بين نقطتين"
-            data-alt-ar="صمّام، شخصية الهوية المرحة لصمام، يلوّح بخيط يربط بين نقطتين"
-            data-alt-en="Sammam, the friendly brand character, waving with a thread that connects two points"
-            loading="lazy"
-          />
-
-          <div class="mascot-floating-badges" aria-hidden="true">
-            <span class="m-badge m-badge-source" data-ar="● نقطة الميدان" data-en="● Field Origin">● نقطة الميدان</span>
-            <span class="m-badge m-badge-target" data-ar="■ قرار موثّق" data-en="■ Verified Decision">■ قرار موثّق</span>
-          </div>
-
-          <span class="mascot-portrait-tag">MEET SAMMAM / BRAND COMPANION · THE CONNECTED THREAD</span>
-        </div>
-
-        <div class="mascot-copy">
-          <span class="section-id">THE FRIENDLY FACE OF SAMMAM</span>
-          <span class="mascot-name" data-ar="هذا صمّام." data-en="Meet Sammam.">هذا صمّام.</span>
-          <h2
-            id="mascot-title"
-            data-ar="خيط واحد.<br><em>من الميدان للقرار.</em>"
-            data-en="One thread.<br><em>From field to decision.</em>"
-          >
-            خيط واحد.<br /><em>من الميدان للقرار.</em>
-          </h2>
-          <p
-            data-ar="صمّام رفيق هوية صمام؛ شخصية مرحة تذكّر بفكرة بسيطة وجوهرية في كل مشروع: خلِّ كل سجل مرتبطًا بمصدره، وكل متابعة بخطوتها التالية، حتى لا يضيع الأثر بين الميدان والإدارة."
-            data-en="Sammam is the friendly companion of the SAMMAM identity. A warm reminder of one essential idea: keep every record connected to its source, and every follow-up to its next step."
-          >
-            صمّام رفيق هوية صمام؛ شخصية مرحة تذكّر بفكرة بسيطة وجوهرية في كل مشروع: خلِّ كل سجل مرتبطًا بمصدره، وكل متابعة بخطوتها التالية، حتى لا يضيع الأثر بين الميدان والإدارة.
-          </p>
-
-          <div class="mascot-slogan">
-            <span class="slogan-overline">THE SAMMAM LINE</span>
-            <strong data-ar="كل خطوة إلها أثر." data-en="Every step leaves a trace.">كل خطوة إلها أثر.</strong>
-            <small data-ar="من الميدان للقرار، خيط واحد لا ينقطع." data-en="One unbroken thread from field to decision.">من الميدان للقرار، خيط واحد لا ينقطع.</small>
-          </div>
-
-          <button
-            type="button"
-            class="mascot-whisper"
-            id="mascot-whisper-btn"
-            aria-label="اضغط لقراءة تذكير آخر من صمّام"
-          >
-            <span class="whisper-avatar">
-              <img
-                src="./assets/sammam-mascot.webp"
-                alt="صمّام"
-                data-alt-ar="صمّام"
-                data-alt-en="Sammam"
-                loading="lazy"
-              />
-            </span>
-            <span class="whisper-body">
-              <small id="whisper-index">همسة صمّام 01 / 04 · انقر للتبديل</small>
-              <p id="whisper-text">ما بقرر عنك — بخلي الخيط واضح بين الملاحظة والقرار.</p>
-            </span>
-            <b aria-hidden="true">↻</b>
-          </button>
-        </div>
       </section>
 
       <!-- ==================== POSITION BAND ==================== -->

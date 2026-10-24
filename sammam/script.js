@@ -737,10 +737,13 @@ for (const pin of document.querySelectorAll(".field-hotspot")) {
 function renderWhisper() {
   const item = whispers[whisperIndex];
   const isAr = language === "ar";
-  document.querySelector("#whisper-index").textContent = isAr
+  const wIdxEl = document.querySelector("#whisper-index");
+  const wTextEl = document.querySelector("#whisper-text");
+  if (!wIdxEl || !wTextEl) return;
+  wIdxEl.textContent = isAr
     ? `همسة صمّام ${item.idx} · انقر للتبديل`
     : `Sammam note ${item.idx} · Click for next`;
-  document.querySelector("#whisper-text").textContent = item[language];
+  wTextEl.textContent = item[language];
 }
 
 document.querySelector("#mascot-whisper-btn")?.addEventListener("click", () => {
